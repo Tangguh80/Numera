@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-family: poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5rem;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: linear-gradient(to bottom, #ffffff, #FCEDDE);
+    color: var(--text-clr);
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+
+  #sidebar {
+    box-sizing: border-box;
+    height: 100vh;
+    width: 60px; /* Collapsed width */
+    padding: 5px;
+    background-color: #ffffff36;
+    border-right: 1px solid var(--line-clr);
+    position: sticky;
+    top: 0;
+    align-self: start;
+    overflow: hidden;
+    transition: width 300ms ease-in-out, padding 300ms ease-in-out;
+    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.041); /* Tambahkan bayangan */
+}
+
+
+#sidebar #logo-text {
+    display: none;
+}
+
+/* Expand sidebar when hovered */
+#sidebar:hover {
+    width: 250px; /* Expanded width */
+    padding: 5px 1em;
+}
+
+#sidebar.close #logo-text {
+    display: none; /* Pastikan tidak terlihat */
+}
+
+/* Tampilkan teks "Apple" saat sidebar diperbesar atau di-hover */
+#sidebar:hover #logo-text {
+    display: block;
+}
+
+/* Rotate the toggle button when sidebar is hovered */
+#sidebar:hover #toggle-btn {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease; 
+}
+
+/* Ensure the toggle button rotates back when the sidebar is collapsed */
+#sidebar.close #toggle-btn {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease; 
+}
+
+
+#sidebar .sub-menu {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+  #sidebar ion-icon {
+    flex-shrink: 0;
+    color: var(--text-clr);
+}
+
+#sidebar a span, 
+#sidebar .dropdown-btn span {
+    flex-grow: 1;
+}
+
+#sidebar a:hover, 
+#sidebar .dropdown-btn:hover {
+    background-color: #b4b4b449;
+}
+
+#sidebar .sub-menu {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: 300ms ease-in-out;
+  }
+  
+  div {
+    overflow: hidden;
+  }
+  
+  #sidebar .sub-menu.show {
+    grid-template-rows: 1fr;
+  }
+  
+  #sidebar .dropdown-btn .rotate {
+    transform: rotate(-180deg);
+    transition: 200ms ease;
+}
+
+#sidebar .sub-menu a {
+    padding-left: 3.9em;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 0;
+}
+
+#toggle-btn {
+    margin-left: auto;
+    padding: 1em;
+    border: none;
+    border-radius: .5em;
+    background: none;
+    cursor: pointer;
+}
+
+#toggle-btn ion-icon {
+    transition: transform 300ms ease;
+}
+
+/* Rotate the toggle icon when sidebar is collapsed */
+#toggle-btn.rotate ion-icon {
+    transform: rotate(180deg);
+}
+
+
+
+
+
+
+  
+
+#sidebar.close {
+    padding: 5px;
+    width: 55px;
+}
+
+  #sidebar ul {
+    list-style: none;
+  }
+
+  #sidebar ul li.active a {
+    background-color:  #F9E1CC;
+  }
+
+
+  #sidebar a, #sidebar .dropdown-btn, #sidebar .logo {
+    border-radius: .5em;
+    padding: .85em;
+    text-decoration: none;
+    color: var(--text-clr);
+    display: flex;
+    align-items: center;
+    gap: 1.5em;
+  }
+  
+  .dropdown-btn {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+
+/* Warna tombol aktif */
+.dropdown-btn.active {
+  background-color: #F9E1CC;
+}
+
+/* Ketika submenu terbuka, tombol dropdown tidak aktif */
+.sub-menu.show + .dropdown-btn.active {
+  background-color: inherit;
+}
+
+
+
+
+
+
+  main {
+    padding: min(30px, 7%);
+  }
+  
+  main p {
+    color: var(--secondary-text-clr);
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .container {
+    border: 1px solid var(--line-clr);
+    border-radius: 1em;
+    margin-bottom: 20px;
+    padding: min(3em, 15%);
+  }
+  
+  h2, p {
+    margin-top: 1em;
+  }
+  
+  
