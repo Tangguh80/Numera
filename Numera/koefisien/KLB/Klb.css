@@ -32,7 +32,7 @@ body {
     align-self: start;
     overflow: hidden;
     transition: width 300ms ease-in-out, padding 300ms ease-in-out;
-    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.041); /* Tambahkan bayangan */
+    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.041); 
 }
 
 
@@ -287,6 +287,8 @@ body {
   .slide-bar{
     display: none;
   }
+
+
   
 
 
@@ -295,17 +297,157 @@ body {
 
 
 
+  .container-Navigasi3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 15px;
+    padding: 10px;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid black;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-button ion-icon {
+    font-size: 16px;
+}
+
+
+.nav-button.active {
+    background:#F9E1CC; /* Warna latar belakang kuning */
+    color: #d21921; /* Warna teks merah */
+}
+
+.nav-button.active ion-icon {
+    color: red; /* Warna ikon merah */
+}
 
 
 
+.container-calculator,
+.container-Dasar ,
+.container-Histori  {
+  display: none;}
 
 
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .container-calculator {
+    background: rgba(255, 255, 255, 0);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;  /* Lebar 100% agar mentok ke kanan */
+    max-width: none; /* Pastikan tidak ada batasan max-width */
+}
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.input-pair {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid black;
+  border-radius: 8px;
+  text-align: right; /* Rata kanan */
+}
+
+.input-field::-webkit-outer-spin-button,
+.input-field::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Hilangkan tombol panah di Chrome & Safari */
+  margin: 0;
+}
+
+.result-group {
+  display: flex;
+  align-items: flex-end; /* Menyesuaikan elemen agar sejajar di bagian bawah */
+  justify-content: space-between;
+}
+
+.result-input {
+  width: 48%; /* Sesuai dengan lebar input di atas */
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-button {
+  width: 48%; /* Samakan lebar tombol dengan input di atas */
+  padding: 10px; /* Pastikan padding seragam */
+  font-size: 18px;
+  font-weight: bold;
+  background-color: yellow;
+  color: rgb(0, 0, 0);
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px; /* Tambahkan jarak agar turun */
+}
 
 
 
+.container-Dasar {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  margin: 0 auto; 
+  padding: 20px;
+  background-color: #ff2020;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
+  opacity: 0; /* Awalnya transparan */
+  animation: fadeIn 0.8s ease-out forwards;
+}
 
+.container-Histori {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  margin: 0 auto; 
+  padding: 20px;
+  background-color: #ff2020;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  opacity: 0; /* Awalnya transparan */
+  animation: fadeIn 0.8s ease-out forwards;
+}
 
 
 
@@ -326,9 +468,9 @@ body {
         display: none;
     }
   
-      main {
-        padding: 50px;
-      }
+    main {
+      padding: 50px 20px; 
+  }
     
       .container {
         padding: 1em;
@@ -424,7 +566,7 @@ body {
   /* ============ Slide Bar ============= */
   .slide-bar {
     position: fixed;
-    top: 50px;
+    top: 40px;
     left: 0;
     width: 100%;
     background: white;
@@ -451,7 +593,7 @@ body {
   }
   
   .slide-bar ul li {
-    margin: 10px 0;
+    margin: 5px 0;
     display: flex;
     align-items: center;
     justify-content: space-between; /* Menjaga teks & ikon sejajar */
@@ -469,9 +611,9 @@ body {
   .slide-bar ul li a {
     text-decoration: none;
     color: black;
-    font-size: 14px;
+    font-size: 12px;
     display: block;
-    padding: 8px 15px; /* Perlebar hitbox dengan menambah padding */
+    padding: 2px 15px; /* Perlebar hitbox dengan menambah padding */
     width: 100%; /* Memastikan link memenuhi lebar */
   }
   
@@ -519,7 +661,7 @@ body {
     background: #f8f8f8;
     padding: 0 10px; /* Padding horizontal tetap, padding vertikal diatur ke 0 */
     border-radius: 5px;
-    margin-top: -10px;
+    margin-top: -5px;
     width: 100%; /* Memastikan submenu melebar */
     transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; /* Animasi untuk max-height dan padding */
   }
@@ -546,7 +688,7 @@ body {
   
   /* Gaya untuk link submenu */
   .submenu2 a {
-    font-size: 14px;
+    font-size: 12px;
     color: black;
     display: block;
     padding: 10px 15px; /* Perlebar hitbox dengan menambah padding */
@@ -592,6 +734,80 @@ body {
     background: #000;
     color: white;
   }
+
+
+
+
+
+
+  /*============ Navigasi 3 =============*/
+  .container-Navigasi3 {
+    display: flex;
+    gap: 5px;
+    margin: 0px;
+    background-color: #00000000;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid black;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.nav-button ion-icon {
+    font-size: 13px;
+}
+
+
+
+
+
+
+
+  /*============ Container calculator 768 =============*/
+
+  .container-calculator {
+    background-color: rgba(255, 0, 0, 0);
+    width: 100%;
+
+}
+
+
+
+  label {
+    font-weight: bold;
+    margin-bottom: -2px;
+    font-size: 10px;
+  }
+
+  .input-field {
+    padding: 8px; /* Kurangi padding agar lebih kecil */
+    font-size: 14px; /* Sesuaikan ukuran teks */
+}
+
+.input-pair,
+.result-input {
+    width: 100%; /* Agar input menyesuaikan lebar layar */
+}
+
+.calc-button {
+    width: 90%; /* Agar tombol mengikuti ukuran input */
+    margin-top: 10px; /* Tambahkan jarak jika perlu */
+    font-size: 14px;
+    padding: 8px;
+}
+
+.input-group,
+.result-group {
+    gap: 10px; /* Beri sedikit jarak antar elemen */
+}
   
     }
    
