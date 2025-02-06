@@ -13,7 +13,6 @@ function toggleSubMenu(button) {
 }
 
 
-
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const toggleButton = document.getElementById('toggle-btn');
@@ -136,6 +135,28 @@ function toggleSlideBar() {
 
 
 
+function handleResize() {
+    const slideBar = document.querySelector('.slide-bar');
+    const menuIcon = document.getElementById('menuIcon');
+
+    if (window.innerWidth > 768) {
+        slideBar.classList.remove('active');
+        slideBar.style.display = "none";
+        slideBar.style.transform = "translateY(-100%)";
+        
+        // Kembalikan ikon menu ke default (menu)
+        if (menuIcon) {
+            menuIcon.setAttribute('name', 'menu');
+        }
+    }
+}
+
+// Jalankan saat resize terjadi
+window.addEventListener('resize', handleResize);
+
+
+
+
 
 /*====================================== toogle dropdown submenu ketika ada yg aktif ====================================*/
 function toggleDropdown() {
@@ -219,3 +240,119 @@ function toggleDropdown() {
 
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Hindari nilai negatif
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*====================================== Navbar3 menapilkan container ====================================*/
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".nav-button");
+        const containers = {
+            "Kalkulator": document.querySelector(".container-calculator"),
+            "Dasar": document.querySelector(".container-Dasar"),
+            "Histori": document.querySelector(".container-Histori"),
+        };
+    
+        // Fungsi untuk menampilkan container yang sesuai dan menyembunyikan yang lain
+        function showContainer(button) {
+            buttons.forEach(btn => btn.classList.remove("active")); // Hapus class aktif dari semua tombol
+            button.classList.add("active"); // Tambahkan class aktif pada tombol yang diklik
+    
+            Object.values(containers).forEach(container => {
+                container.style.display = "none"; // Sembunyikan semua container
+            });
+    
+            const containerName = button.innerText.trim(); // Ambil teks tombol
+            if (containers[containerName]) {
+                containers[containerName].style.display = "block"; // Tampilkan container yang sesuai
+            }
+        }
+    
+        // Tambahkan event listener ke setiap tombol navigasi
+        buttons.forEach(button => {
+            button.addEventListener("click", function () {
+                showContainer(this);
+            });
+        });
+    
+        // Menampilkan container pertama secara default saat halaman dimuat
+        showContainer(buttons[0]);
+    });
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*====================================== Fungsi Calculator ====================================*/
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Ambil semua input dengan class "input-field"
+    const inputFields = document.querySelectorAll(".input-field");
+
+    inputFields.forEach(input => {
+        input.addEventListener("input", function () {
+            // Hapus karakter selain angka dan titik desimal
+            this.value = this.value.replace(/[^0-9.]/g, '');
+        });
+    });
+});
+
+function hitung() {
+    // Ambil nilai input
+    let luasLantaiInput = document.getElementById("luas-lantai");
+    let luasTanahInput = document.getElementById("luas-tanah");
+    let hasilInput = document.getElementById("hasil");
+
+    let luasLantai = luasLantaiInput.value.trim();
+    let luasTanah = luasTanahInput.value.trim();
+
+    // Jika salah satu input kosong, tampilkan pesan "Isi Nilai"
+    if (luasLantai === "" || luasTanah === "") {
+        hasilInput.value = "Isi Nilai";
+        return;
+    }
+
+    // Konversi ke angka
+    luasLantai = parseFloat(luasLantai) || 0;
+    luasTanah = parseFloat(luasTanah) || 0;
+
+    // Pastikan luas tanah tidak nol
+    if (luasTanah === 0) {
+        hasilInput.value = "Luas tanah tidak boleh 0";
+        return;
+    }
+
+    // Hitung hasil
+    let hasil = luasLantai / luasTanah;
+
+    // Tampilkan hasil dengan 4 angka di belakang koma
+    hasilInput.value = hasil.toFixed(4);
+}
