@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<!----=========================================== Navbar Mobile ========================================================== -->
+<!----=========================================== Navbar Mobile width 768px ========================================================== -->
 <nav class="navbar2">
     <div class="logo-navbar">
         <span>Numera</span>
@@ -33,9 +33,9 @@
       <!-- Container submenu terpisah -->
       <div class="submenu-koefisien">
         <ul class="submenu2">
-          <li><a href="/koefisien/KDH/Kdh.html">KDH</a></li>
-          <li><a href="/koefisien/KDB/Kdb.html">KDB</a></li>
-          <li class="active"><a href="/koefisien/KLB/Klb.html">KLB</a></li>
+          <li><a href="/Numera/Numera/koefisien/KDH/Kdh.html">KDH</a></li>
+          <li><a href="/Numera/Numera/koefisien/KDB/Kdb.html">KDB</a></li>
+          <li class="active"><a href="#">KLB</a></li>
         </ul>
       </div>
       <li><a href="#">Profile</a></li>
@@ -74,8 +74,8 @@
                 </button>
                 <ul class="sub-menu">
                     <div>
-                        <li><a href="/koefisien/KDH/Kdh.html">KDH</a></li>
-                        <li><a href="/koefisien/KDB/Kdb.html">KDB</a></li>
+                        <li><a href="/Numera/Numera/koefisien/KDH/Kdh.html">KDH</a></li>
+                        <li><a href="/Numera/Numera/koefisien/KDB/Kdb.html">KDB</a></li>
                         <li class="active"><a href="#">KLB</a></li>                        
                     </div>
                 </ul>
@@ -91,20 +91,50 @@
 
 
     <main>
-        <div class="container">
-            <h2> hello word </h2>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet enim laudantium minus ab nulla id molestiae voluptatem voluptate commodi possimus ratione vitae amet aperiam doloremque, at saepe ea tempora consequuntur.</p>
+        <div class="container-Navigasi3">
+            <button class="nav-button active3">
+                <ion-icon name="calculator"></ion-icon>
+                Kalkulator
+            </button>
+            <button class="nav-button">
+                <ion-icon name="book"></ion-icon>
+                Dasar
+            </button>
+            <button class="nav-button">
+                <ion-icon name="timer"></ion-icon>
+                Histori
+            </button>
         </div>
 
-        <div class="container">
-            <h2>example heading</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, alias exercitationem dignissimos doloremque distinctio impedit aspernatur minima magnam totam repellendus aperiam, corrupti esse natus? Veritatis repellendus porro nam quia beatae!</p>
+        <div class="container-calculator">
+            <div class="input-group">
+                <div class="input-pair">
+                    <label for="luas-lantai">Total Luas Lantai Bangunan</label>
+                    <input type="number" id="luas-lantai" class="input-field" placeholder="0 m²">
+                </div>
+                <div class="input-pair">
+                    <label for="luas-tanah">Luas Tanah</label>
+                    <input type="number" id="luas-tanah" class="input-field" placeholder="0 m²">
+                </div>
+            </div>
+            <div class="result-group">
+                <div class="result-input">
+                    <label for="hasil">Hasil</label>
+                    <input type="text" id="hasil" class="input-field" placeholder="0" readonly>
+                </div>
+                <button class="calc-button" onclick="hitung()">HITUNG</button>
+            </div>
         </div>
 
-        <div class="container">
-            <h2>lorem ipsum</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis quibusdam rerum, iusto quam culpa possimus. Laboriosam laborum nemo impedit ea. Quia ex at numquam itaque iure, adipisci quidem nemo porro.</p>
+
+        <div class="container-Dasar">
+            Calculoid platform for creating web calculators
         </div>
+        <div class="container-Histori">
+            Calculoid platform for creating web calculators
+            Calculoid is a platform for creating interactive web calculators which can be easily publish into your website. Features such as online payments or emails submissions will enhance your e-commerce and lead generation capabilities. You do not have to be a web developer to create your own online calculator in just a few clicks.
+        </div>
+
     </main>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
