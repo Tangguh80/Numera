@@ -345,7 +345,7 @@ body {
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateY(-2px);
+      transform: translateY(0px);
     }
     to {
       opacity: 1;
@@ -357,9 +357,12 @@ body {
     background: rgba(255, 255, 255, 0);
     padding: 20px;
     border-radius: 10px;
-    width: 100%;  /* Lebar 100% agar mentok ke kanan */
-    max-width: none; /* Pastikan tidak ada batasan max-width */
-}
+    width: 100%;  
+    max-width: none; 
+
+    opacity: 0; /* Awalnya transparan */
+    animation: fadeIn 0.8s ease-out forwards;
+  }
 
 .input-group {
     display: flex;
@@ -434,20 +437,64 @@ label {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
+
+
+
+
 .container-Histori {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center; 
   justify-content: center; 
-  margin: 0 auto; 
-  padding: 20px;
-  background-color: #ff2020;
+  width: 100%; 
+  max-width: 100%;
+  margin: 0;
+  padding: 10px;
+  background-color: #d7191f00;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  opacity: 0; /* Awalnya transparan */
-  animation: fadeIn 0.8s ease-out forwards;
 }
+
+.history-button {
+  background-color: white;
+  width: 100%; 
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+
+.history-button:hover {
+  background-color: #f0f0f0;
+}
+
+
+
+
+.expression {
+  font-size: 16px;
+  margin-bottom: 3px;
+  font-weight: bold;
+  color: gray;
+}
+
+.result {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+
+
 
 
 
@@ -808,6 +855,63 @@ label {
 .result-group {
     gap: 10px; /* Beri sedikit jarak antar elemen */
 }
+
+
+
+
+
+
+
+  .container-Histori {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    width: 115%; 
+    max-width: 130%;
+    margin: 0;
+    padding: 10px;
+    background-color: #d7191f00;
+    border-radius: 10px;
+  }
+
+  .history-button {
+    background-color: white;
+    width: 100%; 
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .history-button:hover {
+    background-color: #f0f0f0;
+  }
+
+
+
+
+  .expression {
+    font-size: 13px;
+    margin-bottom: 3px;
+    font-weight: bold;
+    color: gray;
+  }
+
+  .result {
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+  }
   
     }
    
