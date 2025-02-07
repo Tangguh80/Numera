@@ -452,6 +452,9 @@ label {
   padding: 10px;
   background-color: #d7191f00;
   border-radius: 10px;
+
+  opacity: 0; /* Awalnya transparan */
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
 .history-button {
