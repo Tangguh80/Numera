@@ -425,17 +425,47 @@ label {
 .container-Dasar {
   display: flex;
   flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
+  align-items: flex-start; /* Rata kiri */
+  justify-content: flex-start; /* Memastikan isi tetap di kiri */
   margin: 0 auto; 
   padding: 20px;
-  background-color: #ff2020;
+  background-color: #ff202000;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   opacity: 0; /* Awalnya transparan */
   animation: fadeIn 0.8s ease-out forwards;
 }
+
+.rumus {
+  font-size: 20px;
+  text-align: left; /* Rata kiri */
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+}
+
+.fraction {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.fraction .top {
+  border-bottom: 2px solid black;
+  display: block;
+  padding: 5px;
+}
+
+.fraction .bottom {
+  display: block;
+  padding: 5px;
+}
+
+
+
+
+
+
+
 
 
 
@@ -919,6 +949,56 @@ label {
     font-size: 15px;
     font-weight: bold;
     color: black;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .container-Dasar {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; /* Rata kiri */
+    justify-content: flex-start; /* Memastikan isi tetap di kiri */
+    margin: 0 auto; 
+    padding: 20px;
+    background-color: #ff202000;
+    border-radius: 10px;
+  
+    opacity: 0; /* Awalnya transparan */
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .rumus {
+    font-size: 13px;
+    text-align: left; /* Rata kiri */
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+  }
+  
+  .fraction {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .fraction .top {
+    border-bottom: 2px solid black;
+    display: block;
+    padding: 5px;
+  }
+  
+  .fraction .bottom {
+    display: block;
+    padding: 5px;
   }
   
     }
