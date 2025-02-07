@@ -356,3 +356,102 @@ function hitung() {
     // Tampilkan hasil dengan 4 angka di belakang koma
     hasilInput.value = hasil.toFixed(4);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*====================================== fungsi menyimpan ke histori-button ====================================*/
+/*====================================== Fungsi menyimpan ke histori-button ====================================*/
+function hitung() {
+    // Ambil nilai dari input
+    const luasLantai = parseFloat(document.getElementById('luas-lantai').value);
+    const luasTanah = parseFloat(document.getElementById('luas-tanah').value);
+
+    // Validasi input
+    if (isNaN(luasLantai) || isNaN(luasTanah) || luasTanah === 0) {
+        alert("Masukkan nilai yang valid!");
+        return;
+    }
+
+    // Hitung hasil
+    const hasil = luasLantai / luasTanah;
+
+    // Tampilkan hasil di input hasil
+    document.getElementById('hasil').value = hasil.toFixed(2);
+
+    // Buat tombol histori baru
+    const historyButton = document.createElement('button');
+    historyButton.className = 'history-button';
+
+    // Buat elemen span untuk ekspresi dan hasil
+    const expressionSpan = document.createElement('span');
+    expressionSpan.className = 'expression';
+    expressionSpan.textContent = `${luasLantai} ÷ ${luasTanah} =`;
+
+    const resultSpan = document.createElement('span');
+    resultSpan.className = 'result';
+    resultSpan.textContent = hasil.toFixed(2);
+
+    // Tambahkan elemen span ke dalam tombol histori
+    historyButton.appendChild(expressionSpan);
+    historyButton.appendChild(resultSpan);
+
+    // Ambil container histori
+    const containerHistori = document.querySelector('.container-Histori');
+
+    // Tambahkan tombol histori baru ke paling atas container histori
+    containerHistori.insertBefore(historyButton, containerHistori.firstChild);
+
+    // Tambahkan event listener untuk memuat data ke kalkulator saat histori ditekan
+    historyButton.addEventListener("click", function () {
+        // Alihkan navigasi ke Kalkulator
+        document.querySelectorAll(".nav-button").forEach(btn => btn.classList.remove("active3"));
+        document.querySelector(".nav-button:first-child").classList.add("active3");
+
+        // Tampilkan container kalkulator
+        document.querySelector(".container-calculator").style.display = "block";
+        document.querySelector(".container-Histori").style.display = "none";
+
+        // Masukkan nilai histori ke input kalkulator
+        document.getElementById('luas-lantai').value = luasLantai;
+        document.getElementById('luas-tanah').value = luasTanah;
+        document.getElementById('hasil').value = hasil.toFixed(2);
+    });
+
+    // Tampilkan tombol histori
+    historyButton.style.display = 'flex';
+}
