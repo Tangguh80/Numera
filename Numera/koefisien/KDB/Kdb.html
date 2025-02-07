@@ -10,6 +10,48 @@
     <script type="text/javascript" src="Kdb.js" defer></script>
 </head>
 <body>
+
+    <!----=========================================== Navbar Mobile width 768px ========================================================== -->
+    <nav class="navbar2">
+        <div class="logo-navbar">
+            <span>Numera</span>
+        </div>
+        <div class="menu-icon" onclick="toggleSlideBar()">
+            <ion-icon name="menu" id="menuIcon"></ion-icon>
+        </div>
+    </nav>
+
+    <div class="slide-bar">
+        <ul>
+        <li><a href="/Numera/Numera/Home.html">Home</a></li>
+        <li class="dropdown-slidebar">
+            <a href="#" onclick="toggleDropdown()">Koefisien</a>
+            <div class="chevron-wrapper">
+            <ion-icon name="chevron-down" class="chevron-icon" onclick="toggleDropdown()"></ion-icon>
+            </div>
+        </li>
+        <!-- Container submenu terpisah -->
+        <div class="submenu-koefisien">
+            <ul class="submenu2">
+            <li><a href="/Numera/Numera/koefisien/KDH/Kdh.html">KDH</a></li>
+            <li class="active"><a href="#">KDB</a></li>
+            <li><a href="/Numera/Numera/koefisien/KLB/Klb.html">KLB</a></li>
+            </ul>
+        </div>
+        <li><a href="#">Profile</a></li>
+        </ul>
+
+        <div class="language-toggle">
+            <button class="active">ID</button>
+            <button>EN</button>
+        </div>
+    </div>
+
+
+
+
+
+<!----=========================================== Sidebar desktop ========================================================== -->
     <nav id="sidebar">
         <ul>
             <li class="logo-container">
@@ -21,7 +63,7 @@
             
             
            
-                <a href="../Home.html">
+                <a href="/Numera/Numera/Home.html">
                     <ion-icon name="home-outline" style="height: 24px; width: 24px;"></ion-icon>
                     <span>Home</span>
                 </a>
@@ -34,9 +76,9 @@
                 </button>
                 <ul class="sub-menu">
                     <div>
-                        <li><a href="../koefisien/KDH/Kdh.html">KDH</a></li>
+                        <li><a href="/Numera/Numera/koefisien/KDH/Kdh.html">KDH</a></li>
                         <li class="active"><a href="#">KDB</a></li>
-                        <li><a href="../koefisien/KLB/Klb.html">KLB</a></li>                        
+                        <li><a href="/Numera/Numera/koefisien/KLB/Klb.html">KLB</a></li>                        
                     </div>
                 </ul>
             </li>
@@ -51,20 +93,64 @@
 
 
     <main>
-        <div class="container">
-            <h2> hello word </h2>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet enim laudantium minus ab nulla id molestiae voluptatem voluptate commodi possimus ratione vitae amet aperiam doloremque, at saepe ea tempora consequuntur.</p>
+        <div class="container-Navigasi3">
+            <button class="nav-button active3">
+                <ion-icon name="calculator"></ion-icon>
+                Kalkulator
+            </button>
+            <button class="nav-button">
+                <ion-icon name="book"></ion-icon>
+                Dasar
+            </button>
+            <button class="nav-button">
+                <ion-icon name="timer"></ion-icon>
+                Histori
+            </button>
         </div>
 
-        <div class="container">
-            <h2>example heading</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, alias exercitationem dignissimos doloremque distinctio impedit aspernatur minima magnam totam repellendus aperiam, corrupti esse natus? Veritatis repellendus porro nam quia beatae!</p>
+        <div class="container-calculator">
+            <div class="input-group">
+                <div class="input-pair">
+                    <label for="luas-lantai">Luas Bangunan lantai 1</label>
+                    <input type="number" id="luas-lantai" class="input-field" placeholder="0 m²">
+                </div>
+                <div class="input-pair">
+                    <label for="luas-tanah">Luas Tanah</label>
+                    <input type="number" id="luas-tanah" class="input-field" placeholder="0 m²">
+                </div>
+            </div>
+            <div class="result-group">
+                <div class="result-input">
+                    <label for="hasil">Hasil</label>
+                    <input type="text" id="hasil" class="input-field" placeholder="0%" readonly>
+                </div>
+                <button class="calc-button" onclick="hitung()">HITUNG</button>
+            </div>
         </div>
 
-        <div class="container">
-            <h2>lorem ipsum</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis quibusdam rerum, iusto quam culpa possimus. Laboriosam laborum nemo impedit ea. Quia ex at numquam itaque iure, adipisci quidem nemo porro.</p>
+
+
+        
+        <div class="container-Histori">
+            <button class="history-button">
+                <span class="expression" id="(Luas Bangunan Lantai 1 ÷ Luas Tanah) x 100%"> (0 ÷ 0) x 100% =</span>
+                <span class="result" id="Hasil">0%</span>
+            </button>
         </div>
+
+
+        <div class="container-Dasar">
+            <div class="rumus">
+                KDB = 
+                <span class="fraction">
+                    <span class="top">Luas Bangunan Lantai 1</span>
+                    <span class="bottom">Luas Tanah</span>
+                </span>
+                × 100%
+            </div>
+        </div>
+        
+
     </main>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
