@@ -257,76 +257,74 @@ function toggleDropdown() {
 
   /*====================================== Navbar3 menapilkan container ====================================*/
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const buttons = document.querySelectorAll(".nav-button");
-        const containers = {
-            "Kalkulator": document.querySelector(".container-calculator"),
-            "Dasar": document.querySelector(".container-Dasar"),
-            "Histori": document.querySelector(".container-Histori"),
-        };
-    
-        // Fungsi untuk menampilkan container yang sesuai dan menyembunyikan yang lain
-        function showContainer(button) {
-            buttons.forEach(btn => btn.classList.remove("active")); // Hapus class aktif dari semua tombol
-            button.classList.add("active"); // Tambahkan class aktif pada tombol yang diklik
-    
-            Object.values(containers).forEach(container => {
-                container.style.display = "none"; // Sembunyikan semua container
-            });
-    
-            const containerName = button.innerText.trim(); // Ambil teks tombol
-            if (containers[containerName]) {
-                containers[containerName].style.display = "block"; // Tampilkan container yang sesuai
-            }
+  document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".nav-button");
+    const containers = {
+        "Kalkulator": document.querySelector(".container-calculator"),
+        "Dasar": document.querySelector(".container-Dasar"),
+        "Histori": document.querySelector(".container-Histori"),
+    };
+
+    function showContainer(button) {
+        // Hapus class aktif dari semua tombol navigasi
+        buttons.forEach(btn => btn.classList.remove("active")); 
+
+        // Jika tombol yang diklik bukan "Histori", ubah tombol aktif
+        if (!button.classList.contains("history-button")) {
+            button.classList.add("active"); 
+        } else {
+            // Paksa tetap ke Kalkulator jika Histori ditekan
+            document.querySelector(".nav-button:first-child").classList.add("active");
         }
-    
-        // Tambahkan event listener ke setiap tombol navigasi
-        buttons.forEach(button => {
-            button.addEventListener("click", function () {
-                showContainer(this);
-            });
+
+        // Sembunyikan semua container
+        Object.values(containers).forEach(container => {
+            container.style.display = "none"; 
         });
-    
-        // Menampilkan container pertama secara default saat halaman dimuat
-        showContainer(buttons[0]);
-    });
-    
 
+        // Ambil teks tombol
+        const containerName = button.innerText.trim(); 
+        if (containers[containerName]) {
+            containers[containerName].style.display = "block"; 
+        }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*====================================== Fungsi Calculator ====================================*/
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Ambil semua input dengan class "input-field"
-    const inputFields = document.querySelectorAll(".input-field");
-
-    inputFields.forEach(input => {
-        input.addEventListener("input", function () {
-            // Hapus karakter selain angka dan titik desimal
-            this.value = this.value.replace(/[^0-9.]/g, '');
+    // Tambahkan event listener ke setiap tombol navigasi
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
+            showContainer(this);
         });
     });
+
+    // Tambahkan event listener untuk tombol histori agar tetap menampilkan Kalkulator
+    document.querySelector(".history-button").addEventListener("click", function () {
+        showContainer(document.querySelector(".nav-button:first-child")); // Paksa tetap Kalkulator
+        containers["Histori"].style.display = "block"; // Tampilkan histori
+    });
+
+    // Menampilkan container pertama (Kalkulator) secara default saat halaman dimuat
+    showContainer(buttons[0]);
 });
+    
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*====================================== fungsi Hitung dan menyimpan ke histori-button ====================================*/
 function hitung() {
-    // Ambil nilai input
+    // Ambil nilai dari input
     let luasLantaiInput = document.getElementById("luas-lantai");
     let luasTanahInput = document.getElementById("luas-tanah");
     let hasilInput = document.getElementById("hasil");
@@ -355,64 +353,13 @@ function hitung() {
 
     // Tampilkan hasil dengan 4 angka di belakang koma
     hasilInput.value = hasil.toFixed(4);
+
+    // Simpan ke histori
+    simpanHistori(luasLantai, luasTanah, hasil.toFixed(4));
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*====================================== fungsi menyimpan ke histori-button ====================================*/
-/*====================================== Fungsi menyimpan ke histori-button ====================================*/
-function hitung() {
-    // Ambil nilai dari input
-    const luasLantai = parseFloat(document.getElementById('luas-lantai').value);
-    const luasTanah = parseFloat(document.getElementById('luas-tanah').value);
-
-    // Validasi input
-    if (isNaN(luasLantai) || isNaN(luasTanah) || luasTanah === 0) {
-        alert("Masukkan nilai yang valid!");
-        return;
-    }
-
-    // Hitung hasil
-    const hasil = luasLantai / luasTanah;
-
-    // Tampilkan hasil di input hasil
-    document.getElementById('hasil').value = hasil.toFixed(2);
-
+// Fungsi menyimpan hasil ke histori
+function simpanHistori(luasLantai, luasTanah, hasil) {
     // Buat tombol histori baru
     const historyButton = document.createElement('button');
     historyButton.className = 'history-button';
@@ -424,7 +371,7 @@ function hitung() {
 
     const resultSpan = document.createElement('span');
     resultSpan.className = 'result';
-    resultSpan.textContent = hasil.toFixed(2);
+    resultSpan.textContent = hasil;
 
     // Tambahkan elemen span ke dalam tombol histori
     historyButton.appendChild(expressionSpan);
@@ -438,20 +385,23 @@ function hitung() {
 
     // Tambahkan event listener untuk memuat data ke kalkulator saat histori ditekan
     historyButton.addEventListener("click", function () {
-        // Alihkan navigasi ke Kalkulator
-        document.querySelectorAll(".nav-button").forEach(btn => btn.classList.remove("active3"));
-        document.querySelector(".nav-button:first-child").classList.add("active3");
+        // Alihkan navigasi ke Kalkulator dengan class "active"
+        document.querySelectorAll(".nav-button").forEach(btn => btn.classList.remove("active"));
+        document.querySelector(".nav-button:first-child").classList.add("active"); // Aktifkan Kalkulator
 
-        // Tampilkan container kalkulator
+        // Tampilkan container kalkulator dan sembunyikan histori
         document.querySelector(".container-calculator").style.display = "block";
         document.querySelector(".container-Histori").style.display = "none";
 
         // Masukkan nilai histori ke input kalkulator
         document.getElementById('luas-lantai').value = luasLantai;
         document.getElementById('luas-tanah').value = luasTanah;
-        document.getElementById('hasil').value = hasil.toFixed(2);
+        document.getElementById('hasil').value = hasil;
     });
 
     // Tampilkan tombol histori
     historyButton.style.display = 'flex';
 }
+
+
+
