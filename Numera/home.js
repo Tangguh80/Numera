@@ -54,7 +54,7 @@ sidebar.addEventListener('mouseleave', () => {
 
 
 
-
+/*====================================== Toggle slide bar mobile ====================================*/
 function toggleSlideBar() {
     const slideBar = document.querySelector('.slide-bar');
     const menuIcon = document.getElementById('menuIcon');
@@ -84,6 +84,34 @@ function toggleSlideBar() {
         menuIcon.setAttribute('name', 'close');
     }
 }
+
+
+function handleResize() {
+    const slideBar = document.querySelector('.slide-bar');
+    const menuIcon = document.getElementById('menuIcon');
+
+    if (window.innerWidth > 768) {
+        slideBar.classList.remove('active');
+        slideBar.style.display = "none";
+        slideBar.style.transform = "translateY(-100%)";
+        
+        // Kembalikan ikon menu ke default (menu)
+        if (menuIcon) {
+            menuIcon.setAttribute('name', 'menu');
+        }
+    }
+}
+
+// Jalankan saat resize terjadi
+window.addEventListener('resize', handleResize);
+
+
+
+
+
+
+
+
 
 
 
