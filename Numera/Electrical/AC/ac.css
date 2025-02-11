@@ -1,0 +1,1304 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-family: poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5rem;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: linear-gradient(to bottom, #ffffff, #FCEDDE);
+    color: var(--text-clr);
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+
+  #sidebar {
+    box-sizing: border-box;
+    height: 100vh;
+    width: 60px; /* Collapsed width */
+    padding: 5px;
+    background-color: #ffffff36;
+    border-right: 1px solid var(--line-clr);
+    position: sticky;
+    top: 0;
+    align-self: start;
+    overflow: hidden;
+    transition: width 300ms ease-in-out, padding 300ms ease-in-out;
+    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.041); /* Tambahkan bayangan */
+    overflow-y: auto; /* Membuat slidebar scrollable */
+}
+
+
+#sidebar #logo-text {
+    display: none;
+}
+
+/* Expand sidebar when hovered */
+#sidebar:hover {
+    width: 250px; /* Expanded width */
+    padding: 5px 1em;
+}
+
+#sidebar.close #logo-text {
+    display: none; /* Pastikan tidak terlihat */
+}
+
+/* Tampilkan teks "Apple" saat sidebar diperbesar atau di-hover */
+#sidebar:hover #logo-text {
+    display: block;
+}
+
+/* Rotate the toggle button when sidebar is hovered */
+#sidebar:hover #toggle-btn {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease; 
+}
+
+/* Ensure the toggle button rotates back when the sidebar is collapsed */
+#sidebar.close #toggle-btn {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease; 
+}
+
+
+#sidebar .sub-menu1,
+#sidebar .sub-menu2 {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 300ms ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+  #sidebar ion-icon {
+    flex-shrink: 0;
+    color: var(--text-clr);
+}
+
+#sidebar a span, 
+#sidebar .dropdown-btn1 span,
+#sidebar .dropdown-btn2 span  {
+    flex-grow: 1;
+}
+
+#sidebar a:hover, 
+#sidebar .dropdown-btn1:hover,
+#sidebar .dropdown-btn2:hover {
+    background-color: #b4b4b449;
+}
+
+#sidebar .sub-menu1,
+#sidebar .sub-menu2 {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: 300ms ease-in-out;
+  }
+  
+  div {
+    overflow: hidden;
+  }
+  
+  #sidebar .sub-menu1.show,
+  #sidebar .sub-menu2.show {
+    grid-template-rows: 1fr;
+  }
+  
+  #sidebar .dropdown-btn1 .rotate,
+  #sidebar .dropdown-btn2 .rotate {
+    transform: rotate(-180deg);
+    transition: 200ms ease;
+}
+
+#sidebar .sub-menu1 a,
+#sidebar .sub-menu2 a {
+    padding-left: 3.9em;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 0;
+}
+
+#toggle-btn {
+    margin-left: auto;
+    padding: 1em;
+    border: none;
+    border-radius: .5em;
+    background: none;
+    cursor: pointer;
+}
+
+#toggle-btn ion-icon {
+    transition: transform 300ms ease;
+}
+
+/* Rotate the toggle icon when sidebar is collapsed */
+#toggle-btn.rotate ion-icon {
+    transform: rotate(180deg);
+}
+
+
+
+
+
+
+  
+
+#sidebar.close {
+    padding: 5px;
+    width: 55px;
+}
+
+  #sidebar ul {
+    list-style: none;
+  }
+
+/* Warna background untuk elemen <a> yang memiliki class active */
+#sidebar ul li.active a {
+    background-color: #F9E1CC;
+}
+
+/* Warna tombol aktif untuk dropdown-btn1 dan dropdown-btn2 */
+.dropdown-btn1.active,
+.dropdown-btn2.active {
+    background-color: #F9E1CC;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Ketika submenu terbuka, tombol dropdown tidak aktif */
+.sub-menu.show + .dropdown-btn1.active,
+.sub-menu.show + .dropdown-btn2.active {
+    background-color: inherit;
+}
+
+
+  #sidebar a, #sidebar .dropdown-btn1, #sidebar .logo,
+  #sidebar a, #sidebar .dropdown-btn2, #sidebar .logo {
+    border-radius: .5em;
+    padding: .85em;
+    text-decoration: none;
+    color: var(--text-clr);
+    display: flex;
+    align-items: center;
+    gap: 1.5em;
+  }
+  
+  .dropdown-btn1,
+  .dropdown-btn2 {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  main {
+    padding: min(30px, 7%);
+  }
+  
+  main p {
+    color: var(--secondary-text-clr);
+    margin-top: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .container {
+    text-align: center;
+    border: 1px solid var(--line-clr);
+    border-radius: 1em;
+    margin-bottom: 20px;
+    padding: min(3em, 15%);
+    position: relative;
+  }
+  
+  h1 {
+    color: #d21921;
+  }
+  
+  h2, p {
+    margin-top: 1em;
+  }
+  
+  .container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  
+  .button {
+    background: white;
+    padding: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 250px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    color: #000;
+    font-weight: bold;
+    border: 2px solid transparent;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .button:hover {
+    border: 2px solid#d21921;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .button:active {
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    transform: scale(0.98);
+  }
+  
+  .button h3 {
+    color: #d21921;
+    margin-bottom: 10px;
+  }
+  
+  .button p {
+    color: #555;
+    font-size: 13px;
+    margin: 0;
+  }
+  
+
+  .navbar2 {
+    display: none;
+  }
+
+  .slide-bar{
+    display: none;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .container-Navigasi3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 15px;
+    padding: 10px;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid black;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-button ion-icon {
+    font-size: 16px;
+}
+
+
+.nav-button.active {
+    background:#F9E1CC; /* Warna latar belakang kuning */
+    color: #d21921; /* Warna teks merah */
+}
+
+.nav-button.active ion-icon {
+    color: red; /* Warna ikon merah */
+}
+
+
+
+.container-calculator,
+.container-Dasar ,
+.container-Histori  {
+  display: none;}
+
+
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(0px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .container-calculator {
+    background: rgba(255, 0, 0, 0);
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    margin: auto; 
+    text-align: left;
+    opacity: 0; /* Awalnya transparan */
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+    gap: 20px 35px; /* Jarak antar elemen */
+    margin-bottom: 15px;
+}
+
+.input-pair {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid black;
+    border-radius: 8px;
+    text-align: right; /* Tengah seperti di gambar */
+}
+
+.input-field::-webkit-outer-spin-button,
+.input-field::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Hilangkan tombol panah di Chrome & Safari */
+    margin: 0;
+}
+
+.watt-input {
+    grid-column: 1; /* Input WATT di kolom pertama */
+}
+
+.arus-input {
+    grid-column: 2; /* Input Arus di kolom kedua */
+}
+
+.container-calc-button {
+    grid-column: span 2; /* Tombol HITUNG mengambil 2 kolom */
+    display: flex;
+    justify-content: center; /* Pusatkan tombol */
+    margin-top: 15px; /* Jarak dari input di atas */
+}
+
+.calc-button {
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: yellow;
+  color: black;
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap; /* Mencegah tombol terpotong */
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container-Dasar {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; /* Rata kiri */
+  justify-content: flex-start; /* Memastikan isi tetap di kiri */
+  margin: 0 auto; 
+  padding: 20px;
+  background-color: #ff202000;
+  border-radius: 10px;
+
+  opacity: 0; /* Awalnya transparan */
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.rumus {
+  font-size: 20px;
+  text-align: left; /* Rata kiri */
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+}
+
+.fraction {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.fraction .top {
+  border-bottom: 2px solid black;
+  display: block;
+  padding: 5px;
+}
+
+.fraction .bottom {
+  display: block;
+  padding: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.container-Histori {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  width: 100%; 
+  max-width: 100%;
+  margin: 0;
+  padding: 10px;
+  background-color: #d7191f00;
+  border-radius: 10px;
+
+  opacity: 0; /* Awalnya transparan */
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.history-button {
+  background-color: white;
+  width: 100%;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.history-button:hover {
+  background-color: #f0f0f0;
+}
+
+.expression {
+  font-size: 16px;
+  margin-bottom: 3px;
+  font-weight: bold;
+  color: gray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  /* Media Query untuk layar kecil */
+  @media (max-width: 768px) {
+
+    #sidebar {
+      display: none;
+  }
+
+  main {
+    padding: 50px 20px; 
+}
+  
+    .container {
+      padding: 1em;
+      margin-bottom: 10px;
+      z-index: 1;
+    }
+  
+    h1 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+  
+    h2 {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    h3 {
+      font-size: 14px; 
+  }
+  
+    .button {
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100%;
+      padding: 10px;
+      font-size: 12px;
+    }
+  
+    .button p {
+      font-size: 12px;
+    }
+  
+    .container2 {
+      flex-direction: column;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+/*============ Navbar 2 =============*/
+.navbar2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s, background-color 0.3s;
+}
+
+/* Shadow muncul saat scroll ke atas */
+.with-shadow {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.navbar2.at-top {
+  box-shadow: none;
+}
+
+
+.navbar2.scrolled-down {
+  backdrop-filter: blur(10px); 
+  background-color: rgba(255, 255, 255, 0.8); 
+}
+
+
+.navbar2.active {
+  box-shadow: none;
+  border-bottom: 2px solid black; 
+}
+
+.logo-navbar {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ============ Slide Bar ============= */
+.slide-bar {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  background: white;
+  display: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(-100%);
+  z-index: 1001;
+  padding: 20px;
+  text-align: left;
+  max-height: 80vh; /* Atur tinggi maksimum slidebar */
+  overflow-y: auto; /* Membuat slidebar scrollable */
+
+
+    border-bottom-left-radius: 30px;  
+    border-bottom-right-radius: 30px; 
+}
+
+.slide-bar.active {
+  display: block;
+  transform: translateY(0);
+}
+
+.slide-bar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.slide-bar ul li {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Menjaga teks & ikon sejajar */
+  padding-left: 0px; /* Tambahkan margin kiri */
+}
+
+.slide-bar ul li.active a {
+  background-color: #F9E1CC; 
+  color: #d21921; 
+  border-radius: 5px; 
+}
+
+
+/* Gaya untuk link utama */
+.slide-bar ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 12px;
+  display: block;
+  padding: 2px 15px; /* Perlebar hitbox dengan menambah padding */
+  width: 100%; /* Memastikan link memenuhi lebar */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Dropdown 2 */
+.dropdown-slidebar2 {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Menjaga ikon di kanan */
+  width: 100%;
+}
+
+/* Gaya untuk ikon agar berada di samping teks */
+.chevron-icon {
+  margin-right: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-slidebar2.open .chevron-icon {
+  transform: rotate(180deg); /* Putar ikon saat sub-menu dibuka */
+}
+
+/* Submenu untuk Koefisien */
+.submenu-koefisien2 {
+  max-height: 0;
+  overflow: hidden;
+  background: #f8f8f8;
+  padding: 0 10px;
+  border-radius: 5px;
+  margin-top: -5px;
+  width: 100%;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.submenu-koefisien2.open {
+  max-height: 500px;
+  padding: 10px;
+}
+
+/* Submenu item */
+.submenu2 {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+}
+
+.submenu2 li {
+  margin: 5px 0;
+  width: 100%;
+  padding-left: 15px;
+}
+
+.submenu2 a {
+  font-size: 14px;
+  color: black;
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 3px;
+  width: 100%;
+}
+
+/* Hover effect */
+.submenu2 a:hover {
+  background-color: #e0e0e0;
+}
+
+/* Menampilkan submenu saat dropdown terbuka */
+.dropdown-slidebar2.open + .submenu-koefisien2 {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Dropdown 1 */
+.dropdown-slidebar1 {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Menjaga ikon di kanan */
+  width: 100%;
+}
+
+/* Gaya untuk ikon agar berada di samping teks */
+.chevron-icon {
+  margin-right: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-slidebar1.open .chevron-icon {
+  transform: rotate(180deg); /* Putar ikon saat sub-menu dibuka */
+}
+
+/* Submenu untuk Koefisien */
+.submenu-Electrical1 {
+  max-height: 0;
+  overflow: hidden;
+  background: #f8f8f8;
+  padding: 0 10px;
+  border-radius: 5px;
+  margin-top: -5px;
+  width: 100%;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.submenu-Electrical1.open {
+  max-height: 500px;
+  padding: 10px;
+}
+
+/* Submenu item */
+.submenu1 {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+}
+
+.submenu1 li {
+  margin: 5px 0;
+  width: 100%;
+  padding-left: 15px;
+}
+
+.submenu1 a {
+  font-size: 14px;
+  color: black;
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 3px;
+  width: 100%;
+}
+
+/* Hover effect */
+.submenu1 a:hover {
+  background-color: #e0e0e0;
+}
+
+/* Menampilkan submenu saat dropdown terbuka */
+.dropdown-slidebar1.open + .submenu-Electrical1 {
+  display: block;
+}
+
+.dropdown-slidebar1.active-parent {
+    background-color: #F9E1CC; 
+    border-radius: 5px; 
+  }
+   /* Menargetkan teks "Koefisien" agar berubah merah ketika dropdown aktif */
+  .dropdown-slidebar1.active-parent a {
+    color: red !important;
+  }
+
+  .submenu1 li.active a {
+    background-color: #000000; 
+    color: red !important; 
+    border-radius: 5px; 
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*============ Language Toggle =============*/
+.language-toggle {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.language-toggle button {
+  padding: 5px 10px;
+  border: 1px solid #000;
+  background: white;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.language-toggle .active {
+  background: #000;
+  color: white;
+}
+
+  
+ 
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*============ Navigasi 3 =============*/
+.container-Navigasi3 {
+  display: flex;
+  gap: 10px;
+  margin: 0px;
+  background-color: #00000000;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid black;
+  background: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nav-button ion-icon {
+  font-size: 13px;
+}
+
+
+
+
+
+
+
+/*============ Container calculator 768 =============*/
+
+.container-calculator {
+  background-color: rgba(255, 0, 0, 0);
+  width: 100%;
+
+}
+
+
+
+
+.grid-container {
+display: grid;
+grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+gap:20px 10px; /* Jarak antar elemen */
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: -2px;
+  font-size: 10px;
+}
+
+.input-field {
+  padding: 8px; /* Kurangi padding agar lebih kecil */
+  font-size: 14px; /* Sesuaikan ukuran teks */
+}
+
+.input-pair,
+.result-input {
+  width: 100%; /* Agar input menyesuaikan lebar layar */
+}
+
+.calc-button {
+  width: 100%; /* Agar tombol mengikuti ukuran input */
+  margin-top: 10px; /* Tambahkan jarak jika perlu */
+  font-size: 14px;
+  padding: 8px;
+}
+
+.input-group,
+.result-group {
+  gap: 10px; /* Beri sedikit jarak antar elemen */
+}
+
+
+.input-field::-webkit-outer-spin-button,
+.input-field::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Hilangkan tombol panah di Chrome & Safari */
+    margin: 0;
+}
+
+.watt-input {
+    grid-column: 1; /* Input WATT di kolom pertama */
+}
+
+.arus-input {
+    grid-column: 2; /* Input Arus di kolom kedua */
+}
+
+.container-calc-button {
+    grid-column: span 2; /* Tombol HITUNG mengambil 2 kolom */
+    display: flex;
+    justify-content: center; /* Pusatkan tombol */
+    margin-top: 5px; /* Jarak dari input di atas */
+}
+
+.calc-button {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: yellow;
+  color: black;
+  border: 2px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap; /* Mencegah tombol terpotong */
+  width: 100%;
+}
+
+
+
+
+
+
+.container-Histori {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  width: 115%; 
+  max-width: 130%;
+  margin: 0;
+  padding: 10px;
+  background-color: #d7191f00;
+  border-radius: 10px;
+}
+
+.history-button {
+  background-color: white;
+  width: 90%; 
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.history-button:hover {
+  background-color: #f0f0f0;
+}
+
+.history-button {
+  display: none;
+}
+
+
+.expression {
+  font-size: 13px;
+  margin-bottom: 3px;
+  font-weight: bold;
+  color: gray;
+}
+
+.result {
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container-Dasar {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; /* Rata kiri */
+  justify-content: flex-start; /* Memastikan isi tetap di kiri */
+  margin: 0 auto; 
+  padding: 20px;
+  background-color: #ff202000;
+  border-radius: 10px;
+
+  opacity: 0; /* Awalnya transparan */
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.rumus {
+  font-size: 10px;
+  text-align: left; /* Rata kiri */
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+}
+
+.fraction {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.fraction .top {
+  border-bottom: 2px solid black;
+  display: block;
+  padding: 5px;
+}
+
+.fraction .bottom {
+  display: block;
+  padding: 5px;
+}
+
+  }

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numera | AC split</title>
+    <meta name="theme-color" content="#F7C89F">
+    <link rel="stylesheet" href="ac.css">
+    <link rel="icon" type="image/png" href="https://github.com/Tangguh80/Gambar/blob/main/LOGO%20CALCULATOR2.png?raw=true">
+    <script type="text/javascript" src="ac.js" defer></script>
+</head>
+<body>
+
+<!----=========================================== Navbar Mobile ========================================================== -->
+    <nav class="navbar2">
+        <div class="logo-navbar">
+            <span>Numera</span>
+        </div>
+        <div class="menu-icon" onclick="toggleSlideBar()">
+            <ion-icon name="menu" id="menuIcon"></ion-icon>
+        </div>
+    </nav>
+
+    <div class="slide-bar">
+        <ul>
+            <li><a href="/Home.html">Beranda</a></li>
+
+<!----================= Drodown Slidebar 1 ====================== -->
+
+    <li class="dropdown-slidebar1">
+        <a href="#" onclick="toggleDropdown1()">Elektrikal</a>
+        <div class="chevron-wrapper">
+            <ion-icon name="chevron-down" class="chevron-icon" onclick="toggleDropdown1()"></ion-icon>
+        </div>
+    </li>            
+
+    <!-- Container submenu terpisah -->
+    <div class="submenu-Electrical1">
+        <ul class="submenu1">
+            <li class="active"><a href="#">AC Split</a></li>
+        </ul>
+    </div>
+
+
+<!----================= Drodown Slidebar 2 ====================== -->
+
+            <li class="dropdown-slidebar2">
+                <a href="#" onclick="toggleDropdown2()">Koefisien</a>
+                <div class="chevron-wrapper">
+                    <ion-icon name="chevron-down" class="chevron-icon" onclick="toggleDropdown2()"></ion-icon>
+                </div>
+            </li>            
+    
+            <!-- Container submenu terpisah -->
+            <div class="submenu-koefisien2">
+                <ul class="submenu2">
+                    <li><a href="/koefisien/KDH/Kdh.html">KDH</a></li>
+                    <li><a href="/koefisien/KDB/Kdb.html">KDB</a></li>
+                    <li><a href="/koefisien/KLB/Klb.html">KLB</a></li>
+                </ul>
+            </div>
+    
+            <li><a href="#">Profile</a></li>
+        </ul>
+    
+        <div class="language-toggle">
+            <button class="active">ID</button>
+            <button>EN</button>
+        </div>
+    </div>
+    
+
+    
+<!----=========================================== Sidebar desktop ========================================================== -->
+    <nav id="sidebar">
+        <ul>
+            <li class="logo-container">
+                <span class="logo" id="logo-text">NUMERA</span>
+                <button id="toggle-btn">
+                    <ion-icon name="arrow-forward-outline" style="height: 24px; width: 24px;"></ion-icon>
+                </button>
+            </li>
+            
+            
+            <li>
+                <a href="/Home.html">
+                    <ion-icon name="home-outline" style="height: 24px; width: 24px;"></ion-icon>
+                    <span>Home</span>
+                </a>
+            </li>
+
+<!----================= toggle submenu 1 ====================== -->
+            <li>
+                <button onclick="toggleSubMenu1(this)" class="dropdown-btn1">
+                    <ion-icon name="flash-outline" style="height: 24px; width: 24px;"></ion-icon>
+                    <span>Elektrikal</span>
+                    <ion-icon id="chevron-icon" name="chevron-down-outline" style="height: 24px; width: 24px;"></ion-icon>
+                </button>
+                <ul class="sub-menu1">
+                    <div>
+                        <li class="active"><a href="#">AC</a></li>                     
+                    </div>
+                </ul>
+            </li>
+
+<!----================= toggle submenu 2 ====================== -->
+            <li>
+                <button onclick="toggleSubMenu2(this)" class="dropdown-btn2">
+                    <ion-icon name="business" style="height: 24px; width: 24px;"></ion-icon>
+                    <span>koefisien</span>
+                    <ion-icon id="chevron-icon" name="chevron-down-outline" style="height: 24px; width: 24px;"></ion-icon>
+                </button>
+                <ul class="sub-menu2">
+                    <div>
+                        <li><a href="/koefisien/KDH/Kdh.html">KDH</a></li>
+                        <li><a href="/koefisien/KDB/Kdb.html">KDB</a></li>
+                        <li><a href="/koefisien/KLB/Klb.html">KLB</a></li>                       
+                    </div>
+                </ul>
+            </li>
+
+            <li>
+                <a href="profile.html">
+                    <ion-icon name="person-circle-outline" style="height: 24px; width: 24px;"></ion-icon>
+                    <span>Profile</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+
+
+
+    <main>
+        <div class="container-Navigasi3">
+            <button class="nav-button active3">
+                <ion-icon name="calculator"></ion-icon>
+                Kalkulator
+            </button>
+            <button class="nav-button">
+                <ion-icon name="book"></ion-icon>
+                Dasar
+            </button>
+            <button class="nav-button">
+                <ion-icon name="timer"></ion-icon>
+                Histori
+            </button>
+        </div>
+
+
+        <div class="container-calculator">
+            <div class="grid-container">
+                <div class="input-pair">
+                    <label for="Luas-Ruangan">Luas Ruangan</label>
+                    <input type="number" id="Luas-Ruangan" class="input-field" placeholder="0 m²">
+                </div>
+                <div class="input-pair">
+                    <label for="BTU/h">BTU/h</label>
+                    <input type="text" id="BTU/h" class="input-field" placeholder="0" readonly>
+                </div>
+                <div class="input-pair">
+                    <label for="PK-AC">PK AC</label>
+                    <input type="text" id="PK-AC" class="input-field" placeholder="0 Pk" readonly>
+                </div>
+                <div class="input-pair">
+                    <label for="Jumlah-AC">Jumlah AC</label>
+                    <input type="text" id="Jumlah-AC" class="input-field" placeholder="0 unit" readonly>
+                </div>
+                <div class="input-pair watt-input">
+                    <label for="Jumlah-WATT">WATT</label>
+                    <input type="text" id="Jumlah-WATT" class="input-field" placeholder="0 Watt" readonly>
+                </div>
+                <div class="input-pair arus-input">
+                    <label for="Arus">Arus</label>
+                    <input type="text" id="Arus" class="input-field" placeholder="0 A" readonly>
+                </div>
+                <div class="container-calc-button">
+                    <button class="calc-button" onclick="hitung()">HITUNG</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-Histori">
+            <button class="history-button">
+                <span class="expression">Luas Ruangan = 0 m²</span>
+                <span class="expression">BTU/h = 0</span>
+                <span class="expression">PK AC = 0 Pk</span>
+                <span class="expression">Jumlah AC = 0 unit</span>
+                <span class="expression">Jumlah Watt = 0 Watt</span>
+                <span class="expression">Jumlah Arus = 0 A</span>
+            </button>
+        </div>
+        
+        
+
+
+        <div class="container-Dasar">
+            <div class="rumus">
+                KDH = 
+                <span class="fraction">
+                    <span class="top">Luas Tanah - Luas Bangunan Lantai 1</span>
+                    <span class="bottom">Luas Tanah</span>
+                </span>
+                × 100%
+            </div>
+        </div>
+    
+
+    </main>
+
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+</body>
+</html>
