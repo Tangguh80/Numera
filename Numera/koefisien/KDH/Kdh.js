@@ -1,69 +1,99 @@
-function toggleSubMenu(button) {
+document.addEventListener('DOMContentLoaded', function () {
+    // Inisialisasi: Periksa apakah ada sub menu aktif saat halaman dimuat
+    const dropdownButtons = document.querySelectorAll('.dropdown-btn1, .dropdown-btn2');
+    dropdownButtons.forEach(button => {
+        const subMenu = button.nextElementSibling;
+
+        // Cek apakah ada elemen dengan class 'active' di dalam submenu
+        if (subMenu && subMenu.querySelector('.active')) {
+            // Tambahkan class 'active' ke tombol dropdown yang sesuai
+            button.classList.add('active');
+        }
+
+        // Tambahkan event listener untuk tombol dropdown
+        button.addEventListener('click', () => {
+            const menuClass = button.classList.contains('dropdown-btn1') ? 'sub-menu1' : 'sub-menu2';
+            toggleSubMenu(button, menuClass);
+        });
+    });
+});
+
+function toggleSubMenu(button, menuClass) {
     const subMenu = button.nextElementSibling;
     const chevronIcon = button.querySelector('#chevron-icon');
 
-    // Toggle class 'show' untuk submenu
+    // Tutup submenu lain sebelum membuka yang baru
+    document.querySelectorAll(`.${menuClass}.show`).forEach(menu => {
+        if (menu !== subMenu) {
+            menu.classList.remove('show');
+            menu.previousElementSibling.classList.remove('active');
+            menu.previousElementSibling.querySelector('#chevron-icon')?.classList.remove('rotate');
+        }
+    });
+
+    // Toggle class 'show' pada submenu
     subMenu.classList.toggle('show');
+    chevronIcon?.classList.toggle('rotate');
 
-    // Toggle class 'rotate' pada ikon
-    chevronIcon.classList.toggle('rotate');
-
-    // Toggle class 'active' pada tombol dropdown
-    button.classList.toggle('active', !subMenu.classList.contains('show'));
+    // Jika submenu terbuka, non-aktifkan background li
+    if (subMenu.classList.contains('show')) {
+        button.classList.remove('active');
+    } else {
+        // Jika submenu ditutup, aktifkan background li setelah delay 1 detik
+        setTimeout(() => {
+            if (subMenu.querySelector('.active')) {
+                button.classList.add('active');
+            }
+        }, 1000); // Delay 1 detik
+    }
 }
-
 
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const toggleButton = document.getElementById('toggle-btn');
-    
-    // Toggle the 'close' class to collapse/expand the sidebar
+
     sidebar.classList.toggle('close');
-    
-    // Close all submenus when the sidebar collapses
+
     if (sidebar.classList.contains('close')) {
-        const subMenus = document.querySelectorAll('#sidebar .sub-menu.show');
-        subMenus.forEach(subMenu => {
-            subMenu.classList.remove('show'); // Hide the submenu
+        document.querySelectorAll('.sub-menu1.show, .sub-menu2.show').forEach(subMenu => {
+            subMenu.classList.remove('show');
+        });
+        document.querySelectorAll('.dropdown-btn1 .rotate, .dropdown-btn2 .rotate').forEach(chevron => {
+            chevron.classList.remove('rotate');
         });
 
-        const chevrons = document.querySelectorAll('#sidebar .dropdown-btn .rotate');
-        chevrons.forEach(chevron => {
-            chevron.classList.remove('rotate'); // Reset the chevron rotation
-        });
+        // Aktifkan background li setelah delay 1 detik
+        setTimeout(() => {
+            document.querySelectorAll('.dropdown-btn1, .dropdown-btn2').forEach(button => {
+                const subMenu = button.nextElementSibling;
+                if (!subMenu.classList.contains('show') && subMenu.querySelector('.active')) {
+                    button.classList.add('active');
+                }
+            });
+        }, 1000); // Delay 1 detik
     }
-
-    // Optional: Rotate the icon on the toggle button
     toggleButton.classList.toggle('rotate');
 }
 
-
-const sidebar = document.getElementById('sidebar');
-
-sidebar.addEventListener('mouseleave', () => {
-    const subMenus = document.querySelectorAll('#sidebar .sub-menu.show');
-    const chevrons = document.querySelectorAll('#sidebar .dropdown-btn .rotate');
-
-    subMenus.forEach(subMenu => {
-        subMenu.classList.remove('show'); // Tutup semua submenu
+// Menutup submenu saat kursor meninggalkan sidebar
+document.getElementById('sidebar').addEventListener('mouseleave', () => {
+    document.querySelectorAll('.sub-menu1.show, .sub-menu2.show').forEach(subMenu => {
+        subMenu.classList.remove('show');
+    });
+    document.querySelectorAll('.dropdown-btn1 .rotate, .dropdown-btn2 .rotate').forEach(chevron => {
+        chevron.classList.remove('rotate');
     });
 
-    chevrons.forEach(chevron => {
-        chevron.classList.remove('rotate'); // Reset rotasi ikon
-    });
-
-    // Tambahkan .active setelah animasi selesai (300ms sesuai CSS)
+    // Aktifkan background li setelah delay 1 detik
     setTimeout(() => {
-        const dropdownButtons = document.querySelectorAll('.dropdown-btn');
-        dropdownButtons.forEach(button => {
-            if (!button.nextElementSibling.classList.contains('show')) {
-                button.classList.add('active'); // Kembalikan tombol dropdown aktif
+        document.querySelectorAll('.dropdown-btn1, .dropdown-btn2').forEach(button => {
+            const subMenu = button.nextElementSibling;
+            if (!subMenu.classList.contains('show') && subMenu.querySelector('.active')) {
+                button.classList.add('active');
             }
         });
-    }, 300); // 300ms sesuai dengan transition di CSS
+    }, 300); // Delay 1 detik
 });
-
-
 
 
 
@@ -77,7 +107,7 @@ sidebar.addEventListener('mouseleave', () => {
 
 // Inisialisasi: Periksa apakah ada sub menu aktif saat halaman dimuat
 document.addEventListener('DOMContentLoaded', function() {
-    const dropdownButtons = document.querySelectorAll('.dropdown-btn');
+    const dropdownButtons = document.querySelectorAll('.dropdown-btn1');
     dropdownButtons.forEach(button => {
         const subMenu = button.nextElementSibling;
         const activeSubMenu = subMenu.querySelector('.active');
@@ -134,7 +164,6 @@ function toggleSlideBar() {
 }
 
 
-
 function handleResize() {
     const slideBar = document.querySelector('.slide-bar');
     const menuIcon = document.getElementById('menuIcon');
@@ -158,10 +187,61 @@ window.addEventListener('resize', handleResize);
 
 
 
-/*====================================== toogle dropdown submenu ketika ada yg aktif ====================================*/
-function toggleDropdown() {
-    let dropdown = document.querySelector(".dropdown-slidebar");
-    let submenuContainer = document.querySelector(".submenu-koefisien");
+/*====================================== Toggle Slidebar 1 ====================================*/
+
+function toggleDropdown1() {
+    let dropdown = document.querySelector(".dropdown-slidebar1");
+    let submenuContainer = document.querySelector(".submenu-Electrical1");
+  
+    dropdown.classList.toggle("open");
+    submenuContainer.classList.toggle("open"); // Toggle class open pada submenu container
+  
+    // Periksa apakah ada item aktif di dalam submenu
+    let activeSubmenuItem = document.querySelector(".submenu1 li.active");
+  
+    if (activeSubmenuItem) {
+        if (!submenuContainer.classList.contains("open")) {
+            // Jika submenu tertutup, tambahkan class active-parent setelah delay 0.3 detik
+            setTimeout(() => {
+                dropdown.classList.add("active-parent");
+            }, 400); // Delay 0.3 detik (300 milidetik)
+        } else {
+            // Jika submenu terbuka, hapus class active-parent
+            dropdown.classList.remove("active-parent");
+        }
+    }
+}
+  
+// Pastikan event tidak menutup submenu saat diklik
+document.querySelectorAll(".submenu1 a").forEach(item => {
+    item.addEventListener("click", (event) => {
+        event.stopPropagation(); // Mencegah event dari menutup dropdown
+    });
+});
+  
+// Cek saat halaman dimuat
+document.addEventListener("DOMContentLoaded", () => {
+    let dropdown = document.querySelector(".dropdown-slidebar1");
+    let submenuContainer = document.querySelector(".submenu-Electrical1");
+    let activeSubmenuItem = document.querySelector(".submenu1 li.active");
+  
+    // Jika ada item aktif dan submenu tertutup, tambahkan class active-parent
+    if (activeSubmenuItem && !submenuContainer.classList.contains("open")) {
+        dropdown.classList.add("active-parent");
+    }
+});
+
+
+
+
+
+
+
+/*====================================== Toggle Slidebar 2 ====================================*/
+
+function toggleDropdown2() {
+    let dropdown = document.querySelector(".dropdown-slidebar2");
+    let submenuContainer = document.querySelector(".submenu-koefisien2");
   
     dropdown.classList.toggle("open");
     submenuContainer.classList.toggle("open"); // Toggle class open pada submenu container
@@ -170,36 +250,36 @@ function toggleDropdown() {
     let activeSubmenuItem = document.querySelector(".submenu2 li.active");
   
     if (activeSubmenuItem) {
-      if (!submenuContainer.classList.contains("open")) {
-        // Jika submenu tertutup, tambahkan class active-parent setelah delay 0.3 detik
-        setTimeout(() => {
-          dropdown.classList.add("active-parent");
-        }, 400); // Delay 0.3 detik (300 milidetik)
-      } else {
-        // Jika submenu terbuka, hapus class active-parent
-        dropdown.classList.remove("active-parent");
-      }
+        if (!submenuContainer.classList.contains("open")) {
+            // Jika submenu tertutup, tambahkan class active-parent setelah delay 0.3 detik
+            setTimeout(() => {
+                dropdown.classList.add("active-parent");
+            }, 400); // Delay 0.3 detik (300 milidetik)
+        } else {
+            // Jika submenu terbuka, hapus class active-parent
+            dropdown.classList.remove("active-parent");
+        }
     }
-  }
+}
   
-  // Pastikan event tidak menutup submenu saat diklik
-  document.querySelectorAll(".submenu2 a").forEach(item => {
+// Pastikan event tidak menutup submenu saat diklik
+document.querySelectorAll(".submenu2 a").forEach(item => {
     item.addEventListener("click", (event) => {
-      event.stopPropagation(); // Mencegah event dari menutup dropdown
+        event.stopPropagation(); // Mencegah event dari menutup dropdown
     });
-  });
+});
   
-  // Cek saat halaman dimuat
-  document.addEventListener("DOMContentLoaded", () => {
-    let dropdown = document.querySelector(".dropdown-slidebar");
-    let submenuContainer = document.querySelector(".submenu-koefisien");
+// Cek saat halaman dimuat
+document.addEventListener("DOMContentLoaded", () => {
+    let dropdown = document.querySelector(".dropdown-slidebar2");
+    let submenuContainer = document.querySelector(".submenu-koefisien2");
     let activeSubmenuItem = document.querySelector(".submenu2 li.active");
   
     // Jika ada item aktif dan submenu tertutup, tambahkan class active-parent
     if (activeSubmenuItem && !submenuContainer.classList.contains("open")) {
-      dropdown.classList.add("active-parent");
+        dropdown.classList.add("active-parent");
     }
-  });
+});
 
 
 
