@@ -54,7 +54,7 @@ sidebar.addEventListener('mouseleave', () => {
 
 
 
-/*====================================== Toggle slide bar mobile ====================================*/
+
 function toggleSlideBar() {
     const slideBar = document.querySelector('.slide-bar');
     const menuIcon = document.getElementById('menuIcon');
@@ -86,6 +86,11 @@ function toggleSlideBar() {
 }
 
 
+
+
+
+
+
 function handleResize() {
     const slideBar = document.querySelector('.slide-bar');
     const menuIcon = document.getElementById('menuIcon');
@@ -115,22 +120,100 @@ window.addEventListener('resize', handleResize);
 
 
 
+/*====================================== Toggle Slidebar 1 ====================================*/
 
-
-function toggleDropdown() {
-    let dropdown = document.querySelector(".dropdown-slidebar");
-    let submenuContainer = document.querySelector(".submenu-koefisien");
+function toggleDropdown1() {
+    let dropdown = document.querySelector(".dropdown-slidebar1");
+    let submenuContainer = document.querySelector(".submenu-Electrical1");
   
     dropdown.classList.toggle("open");
     submenuContainer.classList.toggle("open"); // Toggle class open pada submenu container
-  }
   
-  // Pastikan event tidak menutup submenu saat diklik
-  document.querySelectorAll(".submenu2 a").forEach(item => {
+    // Periksa apakah ada item aktif di dalam submenu
+    let activeSubmenuItem = document.querySelector(".submenu1 li.active");
+  
+    if (activeSubmenuItem) {
+        if (!submenuContainer.classList.contains("open")) {
+            // Jika submenu tertutup, tambahkan class active-parent setelah delay 0.3 detik
+            setTimeout(() => {
+                dropdown.classList.add("active-parent");
+            }, 400); // Delay 0.3 detik (300 milidetik)
+        } else {
+            // Jika submenu terbuka, hapus class active-parent
+            dropdown.classList.remove("active-parent");
+        }
+    }
+}
+  
+// Pastikan event tidak menutup submenu saat diklik
+document.querySelectorAll(".submenu1 a").forEach(item => {
     item.addEventListener("click", (event) => {
-      event.stopPropagation(); // Mencegah event dari menutup dropdown
+        event.stopPropagation(); // Mencegah event dari menutup dropdown
     });
-  });
+});
+  
+// Cek saat halaman dimuat
+document.addEventListener("DOMContentLoaded", () => {
+    let dropdown = document.querySelector(".dropdown-slidebar1");
+    let submenuContainer = document.querySelector(".submenu-Electrical1");
+    let activeSubmenuItem = document.querySelector(".submenu1 li.active");
+  
+    // Jika ada item aktif dan submenu tertutup, tambahkan class active-parent
+    if (activeSubmenuItem && !submenuContainer.classList.contains("open")) {
+        dropdown.classList.add("active-parent");
+    }
+});
+
+
+
+
+
+
+
+/*====================================== Toggle Slidebar 2 ====================================*/
+
+function toggleDropdown2() {
+    let dropdown = document.querySelector(".dropdown-slidebar2");
+    let submenuContainer = document.querySelector(".submenu-koefisien2");
+  
+    dropdown.classList.toggle("open");
+    submenuContainer.classList.toggle("open"); // Toggle class open pada submenu container
+  
+    // Periksa apakah ada item aktif di dalam submenu
+    let activeSubmenuItem = document.querySelector(".submenu2 li.active");
+  
+    if (activeSubmenuItem) {
+        if (!submenuContainer.classList.contains("open")) {
+            // Jika submenu tertutup, tambahkan class active-parent setelah delay 0.3 detik
+            setTimeout(() => {
+                dropdown.classList.add("active-parent");
+            }, 400); // Delay 0.3 detik (300 milidetik)
+        } else {
+            // Jika submenu terbuka, hapus class active-parent
+            dropdown.classList.remove("active-parent");
+        }
+    }
+}
+  
+// Pastikan event tidak menutup submenu saat diklik
+document.querySelectorAll(".submenu2 a").forEach(item => {
+    item.addEventListener("click", (event) => {
+        event.stopPropagation(); // Mencegah event dari menutup dropdown
+    });
+});
+  
+// Cek saat halaman dimuat
+document.addEventListener("DOMContentLoaded", () => {
+    let dropdown = document.querySelector(".dropdown-slidebar2");
+    let submenuContainer = document.querySelector(".submenu-koefisien2");
+    let activeSubmenuItem = document.querySelector(".submenu2 li.active");
+  
+    // Jika ada item aktif dan submenu tertutup, tambahkan class active-parent
+    if (activeSubmenuItem && !submenuContainer.classList.contains("open")) {
+        dropdown.classList.add("active-parent");
+    }
+});
+
 
 
 
