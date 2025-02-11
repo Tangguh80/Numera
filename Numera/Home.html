@@ -24,21 +24,39 @@
     <div class="slide-bar">
         <ul>
             <li class="active"><a href="#">Beranda</a></li>
-    
-            <li class="dropdown-slidebar">
-                <a href="#" onclick="toggleDropdown()">Koefisien</a>
+
+<!----================= Drodown Slidebar 1 ====================== -->
+
+    <li class="dropdown-slidebar1">
+        <a href="#" onclick="toggleDropdown1()">Elektrikal</a>
+        <div class="chevron-wrapper">
+            <ion-icon name="chevron-down" class="chevron-icon" onclick="toggleDropdown1()"></ion-icon>
+        </div>
+    </li>            
+
+    <!-- Container submenu terpisah -->
+    <div class="submenu-Electrical1">
+        <ul class="submenu1">
+            <li><a href="/Numera/Numera/Electrical/AC/ac.html">AC Split</a></li>
+        </ul>
+    </div>
+
+
+<!----================= Drodown Slidebar 2 ====================== -->
+
+            <li class="dropdown-slidebar2">
+                <a href="#" onclick="toggleDropdown2()">Koefisien</a>
                 <div class="chevron-wrapper">
-                    <ion-icon name="chevron-down" class="chevron-icon" onclick="toggleDropdown()"></ion-icon>
+                    <ion-icon name="chevron-down" class="chevron-icon" onclick="toggleDropdown2()"></ion-icon>
                 </div>
-            </li>
-            
+            </li>            
     
             <!-- Container submenu terpisah -->
-            <div class="submenu-koefisien">
+            <div class="submenu-koefisien2">
                 <ul class="submenu2">
-                    <li><a href="koefisien/KDH/Kdh.html">KDH</a></li>
-                    <li><a href="koefisien/KDB/Kdb.html">KDB</a></li>
-                    <li><a href="koefisien/KLB/Klb.html">KLB</a></li>
+                    <li><a href="/Numera/Numera/koefisien/KDH/Kdh.html">KDH</a></li>
+                    <li><a href="/Numera/Numera/koefisien/KDB/Kdb.html">KDB</a></li>
+                    <li><a href="/Numera/Numera/koefisien/KLB/Klb.html">KLB</a></li>
                 </ul>
             </div>
     
@@ -70,6 +88,20 @@
                     <span>Home</span>
                 </a>
             </li>
+
+            <li>
+                <button onclick="toggleSubMenu(this)" class="dropdown-btn">
+                    <ion-icon name="flash-outline" style="height: 24px; width: 24px;"></ion-icon>
+                    <span>Elektrikal</span>
+                    <ion-icon id="chevron-icon" name="chevron-down-outline" style="height: 24px; width: 24px;"></ion-icon>
+                </button>
+                <ul class="sub-menu">
+                    <div>
+                        <li><a href="/Numera/Numera/Electrical/AC/ac.html">AC</a></li>                     
+                    </div>
+                </ul>
+            </li>
+
             <li>
                 <button onclick="toggleSubMenu(this)" class="dropdown-btn">
                     <ion-icon name="business" style="height: 24px; width: 24px;"></ion-icon>
@@ -78,9 +110,9 @@
                 </button>
                 <ul class="sub-menu">
                     <div>
-                        <li><a href="koefisien/KDH/Kdh.html">KDH</a></li>
-                        <li><a href="koefisien/KDB/Kdb.html">KDB</a></li>
-                        <li><a href="koefisien/KLB/Klb.html">KLB</a></li>                        
+                        <li><a href="/Numera/Numera/koefisien/KDH/Kdh.html">KDH</a></li>
+                        <li><a href="/Numera/Numera/koefisien/KDB/Kdb.html">KDB</a></li>
+                        <li><a href="/Numera/Numera/koefisien/KLB/Klb.html">KLB</a></li>                        
                     </div>
                 </ul>
             </li>
