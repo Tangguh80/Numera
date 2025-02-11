@@ -33,6 +33,7 @@ body {
     overflow: hidden;
     transition: width 300ms ease-in-out, padding 300ms ease-in-out;
     box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.041); /* Tambahkan bayangan */
+    overflow-y: auto; /* Membuat slidebar scrollable */
 }
 
 
@@ -418,6 +419,8 @@ body {
   z-index: 1001;
   padding: 20px;
   text-align: left;
+  max-height: 80vh; /* Atur tinggi maksimum slidebar */
+  overflow-y: auto; /* Membuat slidebar scrollable */
 
 
     border-bottom-left-radius: 30px;  
@@ -459,8 +462,22 @@ body {
   width: 100%; /* Memastikan link memenuhi lebar */
 }
 
-/* Dropdown */
-.dropdown-slidebar {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Dropdown 2 */
+.dropdown-slidebar2 {
   position: relative;
   cursor: pointer;
   display: flex;
@@ -477,62 +494,176 @@ body {
   transition: transform 0.3s ease;
 }
 
-.dropdown-slidebar.open .chevron-icon {
+.dropdown-slidebar2.open .chevron-icon {
   transform: rotate(180deg); /* Putar ikon saat sub-menu dibuka */
 }
 
-.submenu-koefisien {
-  max-height: 0; /* Awalnya disembunyikan */
-  overflow: hidden; /* Pastikan konten tidak terlihat saat max-height 0 */
+/* Submenu untuk Koefisien */
+.submenu-koefisien2 {
+  max-height: 0;
+  overflow: hidden;
   background: #f8f8f8;
-  padding: 0 10px; /* Padding horizontal tetap, padding vertikal diatur ke 0 */
+  padding: 0 10px;
   border-radius: 5px;
   margin-top: -5px;
-  width: 100%; /* Memastikan submenu melebar */
-  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; /* Animasi untuk max-height dan padding */
+  width: 100%;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
 }
 
-
-.submenu-koefisien.open {
-  max-height: 500px; 
-  padding: 10px; 
+.submenu-koefisien2.open {
+  max-height: 500px;
+  padding: 10px;
 }
 
-/* ============ Submenu koefisien ============= */
+/* Submenu item */
 .submenu2 {
   list-style: none;
-  padding-left: 0; 
-  width: 100%; 
+  padding-left: 0;
+  width: 100%;
 }
 
-/* Setiap item submenu */
 .submenu2 li {
   margin: 5px 0;
   width: 100%;
-  padding-left: 20px; /* Tambahkan margin kiri */
+  padding-left: 15px;
 }
 
-
 .submenu2 a {
-  font-size: 12px;
+  font-size: 14px;
   color: black;
   display: block;
-  padding: 10px 15px; /* Perlebar hitbox dengan menambah padding */
+  padding: 8px 12px;
   text-decoration: none;
   background-color: white;
   border-radius: 3px;
-  width: 100%; /* Memastikan setiap link submenu memenuhi lebar */
+  width: 100%;
 }
 
-/* Efek hover submenu */
+/* Hover effect */
 .submenu2 a:hover {
   background-color: #e0e0e0;
 }
 
-/* Tampilkan container submenu jika dropdown terbuka */
-.dropdown-slidebar.open + .submenu-container {
+/* Menampilkan submenu saat dropdown terbuka */
+.dropdown-slidebar2.open + .submenu-koefisien2 {
   display: block;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Dropdown 1 */
+.dropdown-slidebar1 {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Menjaga ikon di kanan */
+  width: 100%;
+}
+
+/* Gaya untuk ikon agar berada di samping teks */
+.chevron-icon {
+  margin-right: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-slidebar1.open .chevron-icon {
+  transform: rotate(180deg); /* Putar ikon saat sub-menu dibuka */
+}
+
+/* Submenu untuk Koefisien */
+.submenu-Electrical1 {
+  max-height: 0;
+  overflow: hidden;
+  background: #f8f8f8;
+  padding: 0 10px;
+  border-radius: 5px;
+  margin-top: -5px;
+  width: 100%;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.submenu-Electrical1.open {
+  max-height: 500px;
+  padding: 10px;
+}
+
+/* Submenu item */
+.submenu1 {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+}
+
+.submenu1 li {
+  margin: 5px 0;
+  width: 100%;
+  padding-left: 15px;
+}
+
+.submenu1 a {
+  font-size: 14px;
+  color: black;
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 3px;
+  width: 100%;
+}
+
+/* Hover effect */
+.submenu1 a:hover {
+  background-color: #e0e0e0;
+}
+
+/* Menampilkan submenu saat dropdown terbuka */
+.dropdown-slidebar1.open + .submenu-Electrical1 {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
