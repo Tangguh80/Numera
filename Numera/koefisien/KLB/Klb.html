@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<!----=========================================== Navbar Mobile width 768px ========================================================== -->
+<!----=========================================== Navbar Mobile ========================================================== -->
 <nav class="navbar2">
     <div class="logo-navbar">
         <span>Numera</span>
@@ -23,22 +23,44 @@
 
 <div class="slide-bar">
     <ul>
-      <li><a href="/Numera/Numera/Home.html">Home</a></li>
-      <li class="dropdown-slidebar">
-        <a href="#" onclick="toggleDropdown()">Koefisien</a>
-        <div class="chevron-wrapper">
-          <ion-icon name="chevron-down" class="chevron-icon" onclick="toggleDropdown()"></ion-icon>
+        <li><a href="/Numera/Numera/Home.html">Beranda</a></li>
+
+<!----================= Drodown Slidebar 1 ====================== -->
+
+<li class="dropdown-slidebar1">
+    <a href="#" onclick="toggleDropdown1()">Elektrikal</a>
+    <div class="chevron-wrapper">
+        <ion-icon name="chevron-down" class="chevron-icon" onclick="toggleDropdown1()"></ion-icon>
+    </div>
+</li>            
+
+<!-- Container submenu terpisah -->
+<div class="submenu-Electrical1">
+    <ul class="submenu1">
+        <li><a href="/Numera/Numera/Electrical/AC/ac.html">AC Split</a></li>
+    </ul>
+</div>
+
+
+<!----================= Drodown Slidebar 2 ====================== -->
+
+        <li class="dropdown-slidebar2">
+            <a href="#" onclick="toggleDropdown2()">Koefisien</a>
+            <div class="chevron-wrapper">
+                <ion-icon name="chevron-down" class="chevron-icon" onclick="toggleDropdown2()"></ion-icon>
+            </div>
+        </li>            
+
+        <!-- Container submenu terpisah -->
+        <div class="submenu-koefisien2">
+            <ul class="submenu2">
+                <li><a href="/Numera/Numera/koefisien/KDH/Kdh.html">KDH</a></li>
+                <li><a href="/Numera/Numera/koefisien/KDH/Kdh.html">KDB</a></li>
+                <li class="active"><a href="#">KLB</a></li>
+            </ul>
         </div>
-      </li>
-      <!-- Container submenu terpisah -->
-      <div class="submenu-koefisien">
-        <ul class="submenu2">
-          <li><a href="/Numera/Numera/koefisien/KDH/Kdh.html">KDH</a></li>
-          <li><a href="/Numera/Numera/koefisien/KDB/Kdb.html">KDB</a></li>
-          <li class="active"><a href="#">KLB</a></li>
-        </ul>
-      </div>
-      <li><a href="#">Profile</a></li>
+
+        <li><a href="#">Profile</a></li>
     </ul>
 
     <div class="language-toggle">
@@ -50,44 +72,61 @@
 
 
 <!----=========================================== Sidebar desktop ========================================================== -->
-    <nav id="sidebar">
-        <ul>
-            <li class="logo-container">
-                <span class="logo" id="logo-text">NUMERA</span>
-                <button id="toggle-btn">
-                    <ion-icon name="arrow-forward-outline" style="height: 24px; width: 24px;"></ion-icon>
-                </button>
-            </li>
-            
-            
-           
-                <a href="/Numera/Numera/Home.html">
-                    <ion-icon name="home-outline" style="height: 24px; width: 24px;"></ion-icon>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
-                <button onclick="toggleSubMenu(this)" class="dropdown-btn">
-                    <ion-icon name="business" style="height: 24px; width: 24px;"></ion-icon>
-                    <span>koefisien</span>
-                    <ion-icon id="chevron-icon" name="chevron-down-outline" style="height: 24px; width: 24px;"></ion-icon>
-                </button>
-                <ul class="sub-menu">
-                    <div>
-                        <li><a href="/Numera/Numera/koefisien/KDH/Kdh.html">KDH</a></li>
-                        <li><a href="/Numera/Numera/koefisien/KDB/Kdb.html">KDB</a></li>
-                        <li class="active"><a href="#">KLB</a></li>                        
-                    </div>
-                </ul>
-            </li>
-            <li>
-                <a href="profile.html">
-                    <ion-icon name="person-circle-outline" style="height: 24px; width: 24px;"></ion-icon>
-                    <span>Profile</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+<nav id="sidebar">
+    <ul>
+        <li class="logo-container">
+            <span class="logo" id="logo-text">NUMERA</span>
+            <button id="toggle-btn">
+                <ion-icon name="arrow-forward-outline" style="height: 24px; width: 24px;"></ion-icon>
+            </button>
+        </li>
+        
+        
+        <li>
+            <a href="/Numera/Numera/Home.html">
+                <ion-icon name="home-outline" style="height: 24px; width: 24px;"></ion-icon>
+                <span>Home</span>
+            </a>
+        </li>
+
+<!----================= toggle submenu 1 ====================== -->
+        <li>
+            <button onclick="toggleSubMenu1(this)" class="dropdown-btn1">
+                <ion-icon name="flash-outline" style="height: 24px; width: 24px;"></ion-icon>
+                <span>Elektrikal</span>
+                <ion-icon id="chevron-icon" name="chevron-down-outline" style="height: 24px; width: 24px;"></ion-icon>
+            </button>
+            <ul class="sub-menu1">
+                <div>
+                    <li><a href="/Numera/Numera/Electrical/AC/ac.html">AC</a></li>                     
+                </div>
+            </ul>
+        </li>
+
+<!----================= toggle submenu 2 ====================== -->
+        <li>
+            <button onclick="toggleSubMenu2(this)" class="dropdown-btn2">
+                <ion-icon name="business" style="height: 24px; width: 24px;"></ion-icon>
+                <span>koefisien</span>
+                <ion-icon id="chevron-icon" name="chevron-down-outline" style="height: 24px; width: 24px;"></ion-icon>
+            </button>
+            <ul class="sub-menu2">
+                <div>
+                    <li><a href="/Numera/Numera/koefisien/KDH/Kdh.html">KDH</a></li>
+                    <li><a href="/Numera/Numera/koefisien/KDB/Kdb.html">KDB</a></li>
+                    <li class="active"><a href="#">KLB</a></li>                       
+                </div>
+            </ul>
+        </li>
+
+        <li>
+            <a href="profile.html">
+                <ion-icon name="person-circle-outline" style="height: 24px; width: 24px;"></ion-icon>
+                <span>Profile</span>
+            </a>
+        </li>
+    </ul>
+</nav>
 
 
     <main>
@@ -127,6 +166,16 @@
         </div>
 
 
+
+        
+        <div class="container-Histori">
+            <button class="history-button">
+                <span class="expression" id="Luas Lantai Bangunan ÷ Luas Tanah">0 ÷ 0 =</span>
+                <span class="result" id="Hasil">0</span>
+            </button>
+        </div>
+
+
         <div class="container-Dasar">
             <div class="rumus">
                 KLB = 
@@ -136,13 +185,7 @@
                 </span>
             </div>
         </div>
-
-                <div class="container-Histori">
-            <button class="history-button">
-                <span class="expression" id="Luas Lantai Bangunan ÷ Luas Tanah">0 ÷ 0 =</span>
-                <span class="result" id="Hasil">0</span>
-            </button>
-        </div>
+    
 
     </main>
 
