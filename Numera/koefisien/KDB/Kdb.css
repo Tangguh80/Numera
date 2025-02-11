@@ -2,76 +2,78 @@
 
 
 *{
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 html{
-    font-family: poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.5rem;
+  font-family: poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5rem;
 }
 
 body {
-    min-height: 100vh;
-    min-height: 100dvh;
-    background: linear-gradient(to bottom, #ffffff, #FCEDDE);
-    color: var(--text-clr);
-    display: grid;
-    grid-template-columns: auto 1fr;
-  }
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: linear-gradient(to bottom, #ffffff, #FCEDDE);
+  color: var(--text-clr);
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
 
-  #sidebar {
-    box-sizing: border-box;
-    height: 100vh;
-    width: 60px; /* Collapsed width */
-    padding: 5px;
-    background-color: #ffffff36;
-    border-right: 1px solid var(--line-clr);
-    position: sticky;
-    top: 0;
-    align-self: start;
-    overflow: hidden;
-    transition: width 300ms ease-in-out, padding 300ms ease-in-out;
-    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.041); 
+#sidebar {
+  box-sizing: border-box;
+  height: 100vh;
+  width: 60px; /* Collapsed width */
+  padding: 5px;
+  background-color: #ffffff36;
+  border-right: 1px solid var(--line-clr);
+  position: sticky;
+  top: 0;
+  align-self: start;
+  overflow: hidden;
+  transition: width 300ms ease-in-out, padding 300ms ease-in-out;
+  box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.041); /* Tambahkan bayangan */
+  overflow-y: auto; /* Membuat slidebar scrollable */
 }
 
 
 #sidebar #logo-text {
-    display: none;
+  display: none;
 }
 
 /* Expand sidebar when hovered */
 #sidebar:hover {
-    width: 250px; /* Expanded width */
-    padding: 5px 1em;
+  width: 250px; /* Expanded width */
+  padding: 5px 1em;
 }
 
 #sidebar.close #logo-text {
-    display: none; /* Pastikan tidak terlihat */
+  display: none; /* Pastikan tidak terlihat */
 }
 
 /* Tampilkan teks "Apple" saat sidebar diperbesar atau di-hover */
 #sidebar:hover #logo-text {
-    display: block;
+  display: block;
 }
 
 /* Rotate the toggle button when sidebar is hovered */
 #sidebar:hover #toggle-btn {
-    transform: rotate(180deg);
-    transition: transform 0.3s ease; 
+  transform: rotate(180deg);
+  transition: transform 0.3s ease; 
 }
 
 /* Ensure the toggle button rotates back when the sidebar is collapsed */
 #sidebar.close #toggle-btn {
-    transform: rotate(0deg);
-    transition: transform 0.3s ease; 
+  transform: rotate(0deg);
+  transition: transform 0.3s ease; 
 }
 
 
-#sidebar .sub-menu {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 300ms ease-in-out;
+#sidebar .sub-menu1,
+#sidebar .sub-menu2 {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms ease-in-out;
 }
 
 
@@ -82,67 +84,73 @@ body {
 
 
 
-  #sidebar ion-icon {
-    flex-shrink: 0;
-    color: var(--text-clr);
+#sidebar ion-icon {
+  flex-shrink: 0;
+  color: var(--text-clr);
 }
 
 #sidebar a span, 
-#sidebar .dropdown-btn span {
-    flex-grow: 1;
+#sidebar .dropdown-btn1 span,
+#sidebar .dropdown-btn2 span  {
+  flex-grow: 1;
 }
 
 #sidebar a:hover, 
-#sidebar .dropdown-btn:hover {
-    background-color: #b4b4b449;
+#sidebar .dropdown-btn1:hover,
+#sidebar .dropdown-btn2:hover {
+  background-color: #b4b4b449;
 }
 
-#sidebar .sub-menu {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: 300ms ease-in-out;
-  }
-  
-  div {
-    overflow: hidden;
-  }
-  
-  #sidebar .sub-menu.show {
-    grid-template-rows: 1fr;
-  }
-  
-  #sidebar .dropdown-btn .rotate {
-    transform: rotate(-180deg);
-    transition: 200ms ease;
+#sidebar .sub-menu1,
+#sidebar .sub-menu2 {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 300ms ease-in-out;
 }
 
-#sidebar .sub-menu a {
-    padding-left: 3.9em;
-  }
-  
-  .logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1em 0;
+div {
+  overflow: hidden;
+}
+
+#sidebar .sub-menu1.show,
+#sidebar .sub-menu2.show {
+  grid-template-rows: 1fr;
+}
+
+#sidebar .dropdown-btn1 .rotate,
+#sidebar .dropdown-btn2 .rotate {
+  transform: rotate(-180deg);
+  transition: 200ms ease;
+}
+
+#sidebar .sub-menu1 a,
+#sidebar .sub-menu2 a {
+  padding-left: 3.9em;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 0;
 }
 
 #toggle-btn {
-    margin-left: auto;
-    padding: 1em;
-    border: none;
-    border-radius: .5em;
-    background: none;
-    cursor: pointer;
+  margin-left: auto;
+  padding: 1em;
+  border: none;
+  border-radius: .5em;
+  background: none;
+  cursor: pointer;
 }
 
 #toggle-btn ion-icon {
-    transition: transform 300ms ease;
+  transition: transform 300ms ease;
 }
 
 /* Rotate the toggle icon when sidebar is collapsed */
 #toggle-btn.rotate ion-icon {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 
@@ -150,143 +158,150 @@ body {
 
 
 
-  
+
 
 #sidebar.close {
-    padding: 5px;
-    width: 55px;
+  padding: 5px;
+  width: 55px;
 }
 
-  #sidebar ul {
-    list-style: none;
-  }
+#sidebar ul {
+  list-style: none;
+}
 
-  #sidebar ul li.active a {
-    background-color:  #F9E1CC;
-  }
-
-
-  #sidebar a, #sidebar .dropdown-btn, #sidebar .logo {
-    border-radius: .5em;
-    padding: .85em;
-    text-decoration: none;
-    color: var(--text-clr);
-    display: flex;
-    align-items: center;
-    gap: 1.5em;
-  }
-  
-  .dropdown-btn {
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    font: inherit;
-    cursor: pointer;
-  }
-
-  /* Warna tombol aktif */
-.dropdown-btn.active {
+/* Warna background untuk elemen <a> yang memiliki class active */
+#sidebar ul li.active a {
   background-color: #F9E1CC;
 }
 
+/* Warna tombol aktif untuk dropdown-btn1 dan dropdown-btn2 */
+.dropdown-btn1.active,
+.dropdown-btn2.active {
+  background-color: #F9E1CC;
+  transition: background-color 0.3s ease-in-out;
+}
+
 /* Ketika submenu terbuka, tombol dropdown tidak aktif */
-.sub-menu.show + .dropdown-btn.active {
+.sub-menu.show + .dropdown-btn1.active,
+.sub-menu.show + .dropdown-btn2.active {
   background-color: inherit;
 }
 
 
+#sidebar a, #sidebar .dropdown-btn1, #sidebar .logo,
+#sidebar a, #sidebar .dropdown-btn2, #sidebar .logo {
+  border-radius: .5em;
+  padding: .85em;
+  text-decoration: none;
+  color: var(--text-clr);
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.dropdown-btn1,
+.dropdown-btn2 {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
 
 
 
 
-  * {
-    box-sizing: border-box;
-  }
-  
-  main {
-    padding: min(30px, 7%);
-  }
-  
-  main p {
-    color: var(--secondary-text-clr);
-    margin-top: 5px;
-    margin-bottom: 15px;
-  }
-  
-  .container {
-    text-align: center;
-    border: 1px solid var(--line-clr);
-    border-radius: 1em;
-    margin-bottom: 20px;
-    padding: min(3em, 15%);
-    position: relative;
-  }
-  
-  h1 {
-    color: #d21921;
-  }
-  
-  h2, p {
-    margin-top: 1em;
-  }
-  
-  .container2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    position: relative;
-  }
-  
-  .button {
-    background: white;
-    padding: 20px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 250px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    color: #000;
-    font-weight: bold;
-    border: 2px solid transparent;
-    transition: 0.3s ease-in-out;
-  }
-  
-  .button:hover {
-    border: 2px solid#d21921;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .button:active {
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
-    transform: scale(0.98);
-  }
-  
-  .button h3 {
-    color: #d21921;
-    margin-bottom: 10px;
-  }
-  
-  .button p {
-    color: #555;
-    font-size: 13px;
-    margin: 0;
-  }
-  
 
-  .navbar2 {
-    display: none;
-  }
 
-  .slide-bar{
-    display: none;
-  }
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  padding: min(30px, 7%);
+}
+
+main p {
+  color: var(--secondary-text-clr);
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.container {
+  text-align: center;
+  border: 1px solid var(--line-clr);
+  border-radius: 1em;
+  margin-bottom: 20px;
+  padding: min(3em, 15%);
+  position: relative;
+}
+
+h1 {
+  color: #d21921;
+}
+
+h2, p {
+  margin-top: 1em;
+}
+
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.button {
+  background: white;
+  padding: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 250px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  color: #000;
+  font-weight: bold;
+  border: 2px solid transparent;
+  transition: 0.3s ease-in-out;
+}
+
+.button:hover {
+  border: 2px solid#d21921;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+  transform: scale(0.98);
+}
+
+.button h3 {
+  color: #d21921;
+  margin-bottom: 10px;
+}
+
+.button p {
+  color: #555;
+  font-size: 13px;
+  margin: 0;
+}
+
+
+.navbar2 {
+  display: none;
+}
+
+.slide-bar{
+  display: none;
+}
 
 
   
@@ -693,151 +708,276 @@ label {
     cursor: pointer;
   }
   
-  /* ============ Slide Bar ============= */
-  .slide-bar {
-    position: fixed;
-    top: 30px;
-    left: 0;
-    width: 100%;
-    background: white;
-    display: none;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    transform: translateY(-100%);
-    z-index: 1001;
-    padding: 30px;
-    text-align: left;
+/* ============ Slide Bar ============= */
+.slide-bar {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  background: white;
+  display: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(-100%);
+  z-index: 1001;
+  padding: 20px;
+  text-align: left;
+  max-height: 80vh; /* Atur tinggi maksimum slidebar */
+  overflow-y: auto; /* Membuat slidebar scrollable */
+
 
     border-bottom-left-radius: 30px;  
     border-bottom-right-radius: 30px; 
-  }
-  
-  .slide-bar.active {
-    display: block;
-    transform: translateY(0);
-  }
-  
-  .slide-bar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .slide-bar ul li {
-    margin: 5px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Menjaga teks & ikon sejajar */
-    padding-left: 0px; /* Tambahkan margin kiri */
-  }
-  
-  .slide-bar ul li.active a {
-    background-color: #F9E1CC; 
-    color: #d21921; 
-    border-radius: 5px; 
-  }
-  
-  
-  /* Gaya untuk link utama */
-  .slide-bar ul li a {
-    text-decoration: none;
-    color: black;
-    font-size: 12px;
-    display: block;
-    padding: 2px 15px; /* Perlebar hitbox dengan menambah padding */
-    width: 100%; /* Memastikan link memenuhi lebar */
-  }
-  
-  /* Dropdown */
-  .dropdown-slidebar {
-    position: relative;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Menjaga ikon di kanan */
-    width: 100%;
-  }
+}
 
-  .dropdown-slidebar.active-parent {
+.slide-bar.active {
+  display: block;
+  transform: translateY(0);
+}
+
+.slide-bar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.slide-bar ul li {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Menjaga teks & ikon sejajar */
+  padding-left: 0px; /* Tambahkan margin kiri */
+}
+
+.slide-bar ul li.active a {
+  background-color: #F9E1CC; 
+  color: #d21921; 
+  border-radius: 5px; 
+}
+
+
+/* Gaya untuk link utama */
+.slide-bar ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 12px;
+  display: block;
+  padding: 2px 15px; /* Perlebar hitbox dengan menambah padding */
+  width: 100%; /* Memastikan link memenuhi lebar */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Dropdown 2 */
+.dropdown-slidebar2 {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Menjaga ikon di kanan */
+  width: 100%;
+}
+
+/* Gaya untuk ikon agar berada di samping teks */
+.chevron-icon {
+  margin-right: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-slidebar2.open .chevron-icon {
+  transform: rotate(180deg); /* Putar ikon saat sub-menu dibuka */
+}
+
+/* Submenu untuk Koefisien */
+.submenu-koefisien2 {
+  max-height: 0;
+  overflow: hidden;
+  background: #f8f8f8;
+  padding: 0 10px;
+  border-radius: 5px;
+  margin-top: -5px;
+  width: 100%;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.submenu-koefisien2.open {
+  max-height: 500px;
+  padding: 10px;
+}
+
+/* Submenu item */
+.submenu2 {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+}
+
+.submenu2 li {
+  margin: 5px 0;
+  width: 100%;
+  padding-left: 15px;
+}
+
+.submenu2 a {
+  font-size: 14px;
+  color: black;
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 3px;
+  width: 100%;
+}
+
+/* Hover effect */
+.submenu2 a:hover {
+  background-color: #e0e0e0;
+}
+
+/* Menampilkan submenu saat dropdown terbuka */
+.dropdown-slidebar2.open + .submenu-koefisien2 {
+  display: block;
+}
+
+.dropdown-slidebar2.active-parent {
+  background-color: #F9E1CC; 
+  border-radius: 5px; 
+}
+ /* Menargetkan teks "Koefisien" agar berubah merah ketika dropdown aktif */
+.dropdown-slidebar2.active-parent a {
+  color: red !important;
+}
+
+.submenu2 li.active a {
+  background-color: #000000; 
+  color: red !important; 
+  border-radius: 5px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Dropdown 1 */
+.dropdown-slidebar1 {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Menjaga ikon di kanan */
+  width: 100%;
+}
+
+/* Gaya untuk ikon agar berada di samping teks */
+.chevron-icon {
+  margin-right: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-slidebar1.open .chevron-icon {
+  transform: rotate(180deg); /* Putar ikon saat sub-menu dibuka */
+}
+
+/* Submenu untuk Koefisien */
+.submenu-Electrical1 {
+  max-height: 0;
+  overflow: hidden;
+  background: #f8f8f8;
+  padding: 0 10px;
+  border-radius: 5px;
+  margin-top: -5px;
+  width: 100%;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.submenu-Electrical1.open {
+  max-height: 500px;
+  padding: 10px;
+}
+
+/* Submenu item */
+.submenu1 {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+}
+
+.submenu1 li {
+  margin: 5px 0;
+  width: 100%;
+  padding-left: 15px;
+}
+
+.submenu1 a {
+  font-size: 14px;
+  color: black;
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  background-color: white;
+  border-radius: 3px;
+  width: 100%;
+}
+
+/* Hover effect */
+.submenu1 a:hover {
+  background-color: #e0e0e0;
+}
+
+/* Menampilkan submenu saat dropdown terbuka */
+.dropdown-slidebar1.open + .submenu-Electrical1 {
+  display: block;
+}
+
+.dropdown-slidebar1.active-parent {
     background-color: #F9E1CC; 
     border-radius: 5px; 
   }
    /* Menargetkan teks "Koefisien" agar berubah merah ketika dropdown aktif */
-  .dropdown-slidebar.active-parent a {
+  .dropdown-slidebar1.active-parent a {
     color: red !important;
   }
 
-  .submenu2 li.active a {
+  .submenu1 li.active a {
     background-color: #000000; 
     color: red !important; 
     border-radius: 5px; 
   }
-  
- 
-  /* Gaya untuk ikon agar berada di samping teks */
-  .chevron-icon {
-    font-size: 16px;
-    margin-right: 15px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .dropdown-slidebar.open .chevron-icon {
-    transform: rotate(180deg); /* Putar ikon saat sub-menu dibuka */
-  }
-  
-  .submenu-koefisien {
-    max-height: 0; /* Awalnya disembunyikan */
-    overflow: hidden; /* Pastikan konten tidak terlihat saat max-height 0 */
-    background: #f8f8f8;
-    padding: 0 10px; /* Padding horizontal tetap, padding vertikal diatur ke 0 */
-    border-radius: 5px;
-    margin-top: -5px;
-    width: 100%; /* Memastikan submenu melebar */
-    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out; /* Animasi untuk max-height dan padding */
-  }
-  
-  
-  .submenu-koefisien.open {
-    max-height: 500px; 
-    padding: 10px; 
-  }
-  
-  /* Sub-menu */
-  .submenu2 {
-    list-style: none;
-    padding-left: 0; /* Hapus padding kiri agar submenu sejajar */
-    width: 100%; /* Memastikan submenu penuh */
-  }
-  
-  /* Setiap item submenu */
-  .submenu2 li {
-    margin: 5px 0;
-    width: 100%;
-    padding-left: 20px; /* Tambahkan margin kiri */
-  }
-  
-  /* Gaya untuk link submenu */
-  .submenu2 a {
-    font-size: 12px;
-    color: black;
-    display: block;
-    padding: 10px 15px; /* Perlebar hitbox dengan menambah padding */
-    text-decoration: none;
-    background-color: white;
-    border-radius: 3px;
-    width: 100%; /* Memastikan setiap link submenu memenuhi lebar */
-  }
-  
-  /* Efek hover submenu */
-  .submenu2 a:hover {
-    background-color: #e0e0e0;
-  }
-  
-  /* Tampilkan container submenu jika dropdown terbuka */
-  .dropdown-slidebar.open + .submenu-container {
-    display: block;
-  }
-  
+
   
   
   
